@@ -1,0 +1,36 @@
+{
+  "name": "typed-react-markdown",
+  "version": "0.1.0",
+  "description": "Type definitions for react-markdown",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GregRos/typed-react-markdown.git"
+  },
+  "keywords": [
+    "react",
+    "markdown",
+    "typings",
+    "typescript"
+  ],
+  "author": "Greg Rosenbaum",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GregRos/typed-react-markdown/issues"
+  },
+  "homepage": "https://github.com/GregRos/typed-react-markdown#readme",
+  "dependencies": {
+    "@types/react": "^0.14.44"
+  },
+  "devDependencies": {
+    "@types/jest": "^15.1.32",
+    "@types/lodash": "^4.14.38",
+    "jest": "^16.0.2",
+    "lodash": "^4.16.6",
+    "react": "^15.3.2",
+    "react-markdown": "^2.4.2",
+    "react-test-renderer": "^15.3.2"
+  }
+}
