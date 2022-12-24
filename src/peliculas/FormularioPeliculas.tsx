@@ -17,6 +17,7 @@ import css from './FormularioPeliculas.module.css'
 import Criterios from "./Criterios";
 
 export default function FormularioPeliculas(props: formularioPeliculasProps) {
+ 
     const [generosSeleccionados, setGenerosSeleccionados] = 
     useState(mapear(props.generosSeleccionados));
     const [generosNoSeleccionados, setGenerosNoSeleccionados] = 
@@ -68,8 +69,11 @@ export default function FormularioPeliculas(props: formularioPeliculasProps) {
                 </Form>
             )}
         </Formik>
+        
     )
+    
 }
+console.log("ESTO ES CRITERIOS ", Criterios)
 
 interface formularioPeliculasProps {
     modelo: peliculaCreacionDTO;

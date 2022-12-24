@@ -7,11 +7,12 @@ export interface pelicula{
 export interface peliculaCreacionDTO {
     titulo: string;
     clasificacion: string;
-    criterio: string;
-    insatisfactorio: string;
-    desarrollo: string;
-    satisfactorio: string;
-    ejemplar: string;
+    criteriosOBJ:
+        {criterio: string,
+        insatisfactorio: string,
+        desarrollo: string,
+        satisfactorio: string,
+        ejemplar: string}
     
 }
 

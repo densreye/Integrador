@@ -1,5 +1,6 @@
 import { cineDTO } from "cines/cines.model";
 import { generoDTO } from "generos/generos.model";
+import { object } from "yup";
 import FormularioPeliculas from "./FormularioPeliculas";
 
 export default function CrearPeliculas() {
@@ -20,7 +21,13 @@ export default function CrearPeliculas() {
             cinesSeleccionados={[]}
             generosNoSeleccionados={generos}
             generosSeleccionados={[]}
-                modelo={{ titulo: '', clasificacion: '' ,criterio: '' , insatisfactorio: '', desarrollo: '', satisfactorio:'' , ejemplar:'' }}
+                modelo={{ titulo: '', clasificacion: '' ,criteriosOBJ: {
+                    criterio: "",
+                    insatisfactorio: "",
+                    desarrollo: "",
+                    satisfactorio: "",
+                    ejemplar: "",
+                }}}
                 onSubmit={valores => console.log(valores)}
             />
         </>

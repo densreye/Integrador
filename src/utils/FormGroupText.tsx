@@ -19,4 +19,5 @@ interface formGroupTextProps{
     campo: string;
     label?: string;
     placeholder?: string;
+    name?:string;
 }

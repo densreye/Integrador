@@ -1,7 +1,23 @@
 import { Form } from "formik";
 import { useState } from "react";
 import FormGroupText from "utils/FormGroupText";
+ /*
  
+ 
+ [
+  1:[Crterio,Insatisfactorio,Desarrollo,Satisfactorio,Ejemplar],
+  2:[Crterio,Insatisfactorio,Desarrollo,Satisfactorio,Ejemplar],
+  3:[Crterio,Insatisfactorio,Desarrollo,Satisfactorio,Ejemplar],
+  4:[Crterio,Insatisfactorio,Desarrollo,Satisfactorio,Ejemplar],
+]
+ 
+ 
+ 
+ */
+
+/*funcion incremento ID
+  funcion decremento ID
+   */
 const Criterios = ({})=>{
     const [criterias, setCriteriasList] = useState([{ 
       Criterio: "",
@@ -42,18 +58,20 @@ const Criterios = ({})=>{
                 <div className="form-group" >
                   
                   <FormGroupText
+                    name="Criterio"
                     placeholder="Criterio"
                     id="criteria"
                     campo="criterio"
-                    value={singleCriteria.criteria}
+                    value={singleCriteria.Criterio}
                     onChange={(e) => handleCriteriaChange(e, index)}
                     required
                   />
                   <FormGroupText
+                    name="Insatisfactorio"
                     placeholder="Insatisfactorio"
                     id="criteria"
                     campo="insatisfactorio"
-                    value={singleCriteria.criteria2}
+                    value={singleCriteria.Insatisfactorio}
                     onChange={(e2) => handleCriteriaChange(e2, index)}
                     required
                   />
@@ -61,7 +79,7 @@ const Criterios = ({})=>{
                     placeholder="Desarrollo"
                     id="criteria"
                     campo="desarrollo"
-                    value={singleCriteria.criteria3}
+                    value={singleCriteria.Desarrollo}
                     onChange={(e3) => handleCriteriaChange(e3, index)}
                     required
                   />
@@ -69,7 +87,7 @@ const Criterios = ({})=>{
                     placeholder="Satisfactorio"
                     id="criteria"
                     campo="satisfactorio"
-                    value={singleCriteria.criteria4}
+                    value={singleCriteria.Satisfactorio}
                     onChange={(e4) => handleCriteriaChange(e4, index)}
                     required
                   />
@@ -77,7 +95,7 @@ const Criterios = ({})=>{
                     placeholder="Ejemplar"
                     id="criteria"
                     campo="ejemplar"
-                    value={singleCriteria.criteria5}
+                    value={singleCriteria.Ejemplar}
                     onChange={(e5) => handleCriteriaChange(e5, index)}
                     required
                   />

@@ -13,7 +13,6 @@ export default function FormularioGeneros(props: formularioGenerosProps){
 
             validationSchema={Yup.object({
                 nombre: Yup.string().required('Este campo es requerido')
-                    .primeraLetraMayuscula()
             })}
 
         >

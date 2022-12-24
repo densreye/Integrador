@@ -1,7 +1,9 @@
-import { actorPeliculaDTO } from "actores/actores.model";
-import { cineDTO } from "cines/cines.model";
-import { generoDTO } from "generos/generos.model";
+import { actorPeliculaDTO } from "../actores/actores.model";
+import { cineDTO } from "../cines/cines.model";
+import { generoDTO } from "../generos/generos.model";
 import FormularioPeliculas from "./FormularioPeliculas";
+import React from "react";
+
 
 export default function EditarPeliculas() {
 
