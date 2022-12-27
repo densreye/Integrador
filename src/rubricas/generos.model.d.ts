@@ -5,4 +5,9 @@ export interface generoCreacionDTO {
 export interface generoDTO {
     id: number;
     nombre: string;
+    clasificacion:string;
+    criterios: number;
+    fechaCreacion:string;
+    estado: string;
+
 }

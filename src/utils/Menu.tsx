@@ -7,39 +7,23 @@ export default function Menu() {
             <div className="container-fluid">
                 <NavLink className="navbar-brand" 
                 activeClassName={claseActiva} 
-                to="/">React Películas</NavLink>
+                to="/">STAC</NavLink>
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName={claseActiva} 
-                            to="/generos">
-                                Géneros
+                            to="/rubricas">
+                                Rúbricas
                             </NavLink>
                         </li>
+                     
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClassName={claseActiva} 
                             to="/peliculas/filtrar">
-                                Filtrar Películas
+                                Notificaciones
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName={claseActiva} 
-                            to="/actores">
-                                Actores
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName={claseActiva} 
-                            to="/cines">
-                                Cines
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName={claseActiva} 
-                            to="/peliculas/crear">
-                                Crear Películas
-                            </NavLink>
-                        </li>
+ 
                     </ul>
                 </div>
             </div>
