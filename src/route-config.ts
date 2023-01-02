@@ -10,7 +10,8 @@ const rutas = [
     {path: '/rubricas/crear', componente: CrearGenero},
     {path: '/rubricas/editar/:id(\\d+)', componente: EditarGenero},
     {path: '/rubricas', componente: IndiceGeneros, exact: true},
-    {path: '*', componente: RedireccionarALanding}
+    {path: '*', componente: RedireccionarALanding},
+    
 ];
 
 export default rutas;

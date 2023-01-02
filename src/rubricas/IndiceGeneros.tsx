@@ -43,6 +43,7 @@ return (
         <>
             <h3>Rúbricas</h3>
             <Link className="btn btn-primary"to="rubricas/crear">Crear Rúbrica</Link>
+            
             <div className="form-group" style={{width:'150px'}}>
                 <label> Registros por página: </label>
                 <select 
