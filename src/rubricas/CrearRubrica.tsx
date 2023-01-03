@@ -9,6 +9,7 @@ import { useState } from "react";
 export default function CrearGenero() {
     const history = useHistory();
     const [errores,setErrores] = useState<string[]>([]);
+    
     async function crear(genero: generoCreacionDTO) {
         try{
            await axios.post(urlGeneros,genero) 
@@ -25,9 +26,25 @@ export default function CrearGenero() {
             <h3>Crear Rúbrica</h3>
             <MostrarErrores/>
     
-            <FormularioRubricas modelo={{nombre: ''}} 
+            <FormularioRubricas   modelo={{        
+            nombre: "",
+            clasificacion: "",
+            criteriOBJ: [{   
+                  
+            criterio: "",
+            insatisfactorio: "",
+            desarrollo: "",
+            satisfactorio: "",
+            ejemplar: "",
+        }],
+            fechaCreacion:"",
+            estado: false,
+ 
+
+            }} 
                  onSubmit={async valores => {
                     await crear(valores);
+                    console.log("VALORES ACTUALES",valores)
                  }}
             />
         </>

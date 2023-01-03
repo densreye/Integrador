@@ -4,18 +4,18 @@ import { useHistory, useParams } from "react-router-dom";
 import Cargando from "utils/Cargando";
 import { urlGeneros } from "utils/endpoints";
 // import { useParams } from "react-router-dom";
-import FormularioGeneros from "./FormularioRubrica";
+import FormularioRubricas from "./FormularioRubrica";
 import { generoCreacionDTO, generoDTO } from "./generos.model";
 
 export default function EditarGenero() {
 
     const { id }: any = useParams();
-    const [genero,setGenero]=useState<generoDTO>();
+    const [genero,setGenero]=useState<generoCreacionDTO>();
     const [errores,setErrores]=useState<string[]>([]);
     const history = useHistory();
     useEffect(()=>{
         axios.get(`${urlGeneros}/${id}`)
-        .then((respuesta:AxiosResponse<generoDTO>)=>{
+        .then((respuesta:AxiosResponse<generoCreacionDTO>)=>{
             setGenero(respuesta.data)
         })
     })
@@ -33,7 +33,7 @@ export default function EditarGenero() {
     return (
         <>
             <h3>Editar Rúbrica</h3>
-            {genero?<FormularioGeneros modelo={genero   } 
+            {genero?<FormularioRubricas modelo={genero} 
                 onSubmit={async valores=>{
                     await editar(valores)
 

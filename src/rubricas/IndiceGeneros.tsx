@@ -76,14 +76,15 @@ return (
                                 <td>
                                     {genero.nombre}
                                 </td>
-                                <td>{genero.criterios}</td>
+                                <td>CRITERIOS POR OOLOCAR</td>
                                 <td>{genero.clasificacion}</td>
                                 <td>{genero.fechaCreacion}</td>
-                                <td>{genero.estado}</td>
+                                <td>{genero.estado==false?<b>Pendiente</b> :<b>Aprobado</b>}</td>
                                 <td>
                                     <Link className="btn btn-success" to={`/rubricas/editar/${genero.id}`}>
                                         Editar
                                     </Link>
+                                    
                                     <Button
                                     onClick={()=>confirmar(()=>borrar(genero.id))}
                                     className="btn btn-danger">Borrar</Button>

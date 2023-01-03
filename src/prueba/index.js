@@ -6,7 +6,7 @@ import { FormStepper } from "./FormStepper";
 
 const Prueba = () => {
   const criterios = { criterio: "", insatisfactorio: "", desarrollo: "", satisfactorio: "", ejemplar: "" };
-
+ const values=[];
   return (
     <Container sx={{ bgcolor: "#87c1ff4d", paddingY: 3, marginTop: 5 }}>
       <Typography variant="h3" align="center" component="h2">
@@ -20,7 +20,7 @@ const Prueba = () => {
               clasificacion: "",
               links: [criterios],
             }}
-            onSubmit={async (values, actions) => {
+            onSubmit={async ( ) => {
               alert(JSON.stringify(values, null, 2));
               console.log(values);
             }}
@@ -29,7 +29,7 @@ const Prueba = () => {
               <FormStepper>
                 <Grid container spacing={2}>
                   <Grid item md={6}>
-                    <Field fullWidth name="titulo" component={TextField} placeholder="Titulo" />
+                    <Field fullWidth name="nombre" component={TextField} placeholder="Nombre" />
                   </Grid>
                   <Grid item md={6}>
                     <Field fullWidth name="clasificacion" component={TextField} placeholder="Clasificación" />
