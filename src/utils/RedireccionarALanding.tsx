@@ -1,5 +1,5 @@
 import { Redirect } from "react-router";
 
 export default function RedireccionarALanding(){
-    return <Redirect to={{pathname: '/rubricas'}} />
+    return <Redirect to={{pathname: '/'}} />
 }

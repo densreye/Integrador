@@ -18,11 +18,14 @@ export default function Login() {
         try {
             const respuesta = await
                 axios.post<respuestaAutenticacion>(`${urlCuentas}/login`, credenciales);
-  ;
-            console.log("Post LOGIN",respuesta);
+            
+                guardarTokenLocalStorage(respuesta.data);
+                actualizar(obtenerClaims());
+                history.push("/");
+            console.log(respuesta);
         }
         catch (error) {
-            //setErrores(error.response.data);
+            setErrores(errores);
         }
     }
 

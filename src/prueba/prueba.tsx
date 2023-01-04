@@ -40,15 +40,18 @@ export default function Pruebas(props: formularioPruebasProps){
                   </Grid>
                   <Grid item md={6}>
                     <FormGroupText campo="clasificacion" name="clasificacion" placeholder="Clasificación" />
+                    
                   </Grid>
                 </Grid>
                 <FieldArray name="criteriOBJ" >
+                  
                   {({ push, remove }) => (
                     <Grid container spacing={2} sx={{ marginTop: 2, paddingX: 2 }}>
                       <Grid item xs={12}>
                         <Typography variant="h6" component="h2">
                           Criterios
                         </Typography>
+                        <b>Total Criterios: {values.criteriOBJ.length.toString()}</b>
                       </Grid>
                       {values.criteriOBJ.map((_, index) => (
                         <>

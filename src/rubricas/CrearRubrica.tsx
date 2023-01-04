@@ -28,7 +28,7 @@ export default function CrearRubrica() {
             <MostrarErrores/>
     
             <FormularioRubricas   modelo={{        
-            nombre: " ",
+            nombre: "",
             clasificacion: "",
             criteriOBJ: [{   
                   

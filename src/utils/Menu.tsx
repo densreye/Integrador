@@ -3,6 +3,7 @@ import Autorizado from 'Auth/Autorizado';
 import Button from './Button';
 import {useContext} from 'react';
 import AutenticacionContext from 'Auth/AutenticacionContext';
+import { logout } from 'Auth/manejadorJWT';
  
 
 export default function Menu() {
@@ -36,6 +37,12 @@ export default function Menu() {
                                         Notificaciones
                                     </NavLink>
                                     </li>
+                                    <li className="nav-item">
+                                    <NavLink className="nav-link" activeClassName={claseActiva} 
+                                    to="/usuarios">
+                                        Usuarios
+                                    </NavLink>
+                                    </li>
                                 </>        
 
                             }
@@ -45,26 +52,27 @@ export default function Menu() {
                         
  
                     </ul>
-                    <div className='d-flex'>
+                    <div className="d-flex">
                         <Autorizado
-                        autorizado={
-                        <>
-                            <span className='nav-link'>Hola, {obtenerNombreUsuario()}</span>
-                            <Button onClick={()=>{
-                              
-                                actualizar([]);}} >Log out</Button>
-                        </>}
-                        noAutorizado={<>
-                        <Link to="/registro" className="nav-link btn btn-link" >
-                            Registro
-                        </Link>
-                        <Link to="/login" className="nav-link btn btn-link" >
-                            Login
-                        </Link>
-
-                        </>}
+                            autorizado={<>
+                            <span className="nav-link">Hola, {obtenerNombreUsuario()}</span>
+                            <Button 
+                           
+                               onClick={() => {
+                                   logout();
+                                   actualizar([]);
+                               }}
+                            className="nav-link btn btn-link">Log out</Button>
+                            </>}
+                            noAutorizado={<>
+                                <Link to="/Registro" className="nav-link btn btn-link">
+                                    Registro
+                                        </Link>
+                                <Link to="/Login" className="nav-link btn btn-link">
+                                    Login
+                                        </Link>
+                            </>}
                         />
-
                     </div>
                 </div>
             </div>

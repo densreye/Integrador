@@ -12,12 +12,12 @@ import Autorizado from "Auth/Autorizado";
 export default function IndiceRubricas() {
     const [generos,setGeneros]= useState<rubricaDTO[]>();
     const [totalDePaginas,setTotalDePaginas]=useState(0);
-    const [recordsPorPagina, setRecordsPorPagina]=useState(3);
+    const [recordsPorPagina, setRecordsPorPagina]=useState(10);
     const [pagina,setPagina]=useState(1);
     useEffect(()=>{
         cargarDatos();
-    //eslint-disable-next-line react-hooks/exhaustive-deps
 
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     },[pagina,recordsPorPagina])
     function cargarDatos(){
         axios.get(urlRubricas,{
@@ -45,7 +45,7 @@ return (
             <h3>Rúbricas</h3>
 
             
-            <Autorizado autorizado={
+            <Autorizado role="admin" autorizado={
             
             <>
             <Link className="btn btn-primary"to="rubricas/crear">Crear Rúbrica</Link><br></br>
@@ -53,7 +53,7 @@ return (
             </>}
             
                 noAutorizado={<b>No autorizado</b>}
-                role="admin"
+                
             />
             <div className="form-group" style={{width:'150px'}}>
                 <label> Registros por página: </label>
@@ -78,7 +78,7 @@ return (
                             <th>Clasificación</th>
                             <th>Fecha Creación</th>
                             <th>Estado</th>
-                            <th>Acción</th>
+                            <Autorizado role="admin" autorizado={ <th>Acción</th>}/>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,22 +91,18 @@ return (
                                 <td>{genero.clasificacion}</td>
                                 <td>{genero.fechaCreacion}</td>
                                 <td>{genero.estado===false?<b>Pendiente</b> :<b>Aprobado</b>}</td>
-                                <td>
-                                    <Autorizado role="admin"
-                                    autorizado={<>
+                                <Autorizado role="admin"
+                                    autorizado={<> <td>
+                                
                                     <Link className="btn btn-success" to={`/rubricas/editar/${genero.id}`}>
                                         Editar
                                     </Link>
                                     <Button
                                     onClick={()=>confirmar(()=>borrar(genero.id))}
                                     className="btn btn-danger">Borrar</Button>
+                                     </td>
                                     </>}
-                                    
                                     />
-                                    
-                                    
-                                </td>
-
                             </tr>)}
                     </tbody>
                 </table>

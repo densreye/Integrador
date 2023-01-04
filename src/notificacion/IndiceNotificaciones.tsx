@@ -1,13 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Button from "utils/Button";
+ 
 import { urlRubricas } from "utils/endpoints";
 import ListadoGenerico from "utils/ListadoGenerico";
-import Paginacion from "utils/Paginacion";
+ 
 import { rubricaDTO } from "rubricas/rubricas.model";
-import confirmar from "utils/Confirmar";
-import Autorizado from "Auth/Autorizado";
+ 
 
 export default function IndiceNotificaciones() {
     const [generos,setGeneros]= useState<rubricaDTO[]>();
@@ -68,7 +66,7 @@ return (
                                     {genero.nombre}
                                 </td>
                            
-                                <td>{genero.estado===false?<b>Pendiente</b> :<b>Aprobado</b>}</td>
+                                <td>{genero.estado===false?<b>Pendiente</b> :<b>Aprobado</b>}</td>  
                    
                                 <td>
                                 </td>

@@ -8,6 +8,7 @@ export default function FormGroupText(props: formGroupTextProps) {
             {props.label ? <label htmlFor={props.campo}>{props.label}</label> : null} 
             <Field type={props.type}name={props.campo} className="form-control" 
             placeholder={props.placeholder} />
+            
             <ErrorMessage name={props.campo}>{mensaje =>
                 <MostrarErrorCampo mensaje={mensaje} />
             }</ErrorMessage>

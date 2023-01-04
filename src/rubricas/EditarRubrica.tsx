@@ -10,18 +10,18 @@ import { rubricaCreacionDTO} from "./rubricas.model";
 export default function EditarGenero() {
 
     const { id }: any = useParams();
-    const [genero,setGenero]=useState<rubricaCreacionDTO>();
+    const [rubrica,setRubrica]=useState<rubricaCreacionDTO>();
     const [errores,setErrores]=useState<string[]>([]);
     const history = useHistory();
     useEffect(()=>{
         axios.get(`${urlRubricas}/${id}`)
         .then((respuesta:AxiosResponse<rubricaCreacionDTO>)=>{
-            setGenero(respuesta.data)
+            setRubrica(respuesta.data)
         })
     })
-    async function editar(generoEditar:rubricaCreacionDTO) {
+    async function editar(rubricaEditar:rubricaCreacionDTO) {
         try{
-            await axios.put(`${urlRubricas}/${id}`,generoEditar);
+            await axios.put(`${urlRubricas}/${id}`,rubricaEditar);
             history.push('/rubricas')
         }
         catch(error){
@@ -33,7 +33,7 @@ export default function EditarGenero() {
     return (
         <>
             <h3>Editar Rúbrica</h3>
-            {genero?<FormularioRubricas modelo={genero} 
+            {rubrica?<FormularioRubricas modelo={rubrica} 
                 onSubmit={async valores=>{
                     await editar(valores)
 

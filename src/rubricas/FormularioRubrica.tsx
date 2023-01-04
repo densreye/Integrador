@@ -1,12 +1,6 @@
 import { FormikHelpers } from "formik";
 import React from "react";
- 
-import { Container, Grid, Button } from "@mui/material";
- 
-
 import { rubricaCreacionDTO} from "./rubricas.model";
-
-
 import Prueba from "prueba/prueba";
 
 

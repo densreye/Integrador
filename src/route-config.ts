@@ -8,15 +8,18 @@ import RedireccionarALanding from './utils/RedireccionarALanding'
 import Registro from "Auth/Registro";
 import Login from "Auth/Login";
 import IndiceNotificaciones from "notificacion/IndiceNotificaciones";
+import LandingPage from "LandingPage";
+import IndiceUsuarios from "Auth/IndiceUsuarios";
 
 const rutas = [
     {path: '/rubricas/crear', componente: CrearRubrica, exact: true,esAdmin:true},
     {path: '/rubricas/editar/:id(\\d+)', componente: EditarRubrica, exact: true,esAdmin:true},
     {path: '/rubricas', componente: IndiceRubricas, exact: true},
-    {path: '/notificaciones', componente:  IndiceNotificaciones, exact: true},
+    {path: '/notificaciones', componente:  IndiceNotificaciones, exact: true,esAdmin:true},
     {path: '/registro', componente: Registro, exact: true},
     {path: '/login', componente: Login  },
-
+    {path: '/usuarios', componente: IndiceUsuarios, esAdmin: true},
+    {path: '/', componente: LandingPage, exact: true},
     {path: '*', componente: RedireccionarALanding},
     
 ];
