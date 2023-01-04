@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
- 
+using Microsoft.AspNetCore.Identity;
 using RubricasAPI.DTOs;
 using RubricasAPI.Entidades;
 using System;
@@ -15,6 +15,7 @@ namespace RubricasAPI.Utilidades
         {
             CreateMap<Rubrica, RubricaDTO>().ReverseMap();
             CreateMap<RubricaCreacionDTO,Rubrica>();
+            CreateMap<IdentityUser, UsuarioDTO>();
         }
     }
 }

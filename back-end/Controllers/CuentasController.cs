@@ -8,9 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using RubricasAPI.DTOs;
 using RubricasAPI.Utilidades;
-using RubricasAPI.DTOs;
-using RubricasAPI.Utilidades;
-using RubricasAPI;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -45,7 +42,6 @@ namespace RubricasAPI.Controllers
         }
 
         [HttpGet("listadoUsuarios")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
         public async Task<ActionResult<List<UsuarioDTO>>> ListadoUsuarios([FromQuery] PaginacionDTO paginacionDTO)
         {
             var queryable = context.Users.AsQueryable();
@@ -55,7 +51,7 @@ namespace RubricasAPI.Controllers
         }
 
         [HttpPost("HacerAdmin")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
+        
         public async Task<ActionResult> HacerAdmin([FromBody] string usuarioId)
         {
             var usuario = await userManager.FindByIdAsync(usuarioId);
@@ -64,7 +60,6 @@ namespace RubricasAPI.Controllers
         }
 
         [HttpPost("RemoverAdmin")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "EsAdmin")]
         public async Task<ActionResult> RemoverAdmin([FromBody] string usuarioId)
         {
             var usuario = await userManager.FindByIdAsync(usuarioId);

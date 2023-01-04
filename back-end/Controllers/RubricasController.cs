@@ -18,6 +18,8 @@ namespace RubricasAPI.Controllers
 {
     [Route("api/rubricas")]
     [ApiController]
+ 
+
     public class RubricasController : ControllerBase
     {
         private readonly ILogger<RubricasController> logger;
@@ -43,6 +45,7 @@ namespace RubricasAPI.Controllers
         }
 
         [HttpGet("todos")]
+        [AllowAnonymous]
         public async Task<ActionResult<List<RubricaDTO>>> Todos()
         {
             var rubrica = await context.Rubricas.OrderBy(x => x.Nombre).ToListAsync();

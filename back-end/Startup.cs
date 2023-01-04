@@ -64,6 +64,10 @@ namespace RubricasAPI
                         Encoding.UTF8.GetBytes(Configuration["llavejwt"])),
                     ClockSkew=TimeSpan.Zero
                 });
+            services.AddAuthorization(opciones =>
+            {
+                opciones.AddPolicy("EsAdmin", policy => policy.RequireClaim("role", "admin"));
+            });
 
             services.AddResponseCaching();
             services.AddControllers(options =>

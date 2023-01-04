@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace RubricasAPI.Utilidades
 {
-    public static class HttpContextExtensions
-    {
-        public async static Task InsertarParametrosPaginacionEnCabecera<T>(this HttpContext httpContext,
-            IQueryable<T> queryable)
+   public static class HttpContextExtensions
         {
-            if (httpContext == null) { throw new ArgumentNullException(nameof(httpContext)); }
+            public async static Task InsertarParametrosPaginacionEnCabecera<T>(this HttpContext httpContext,
+                IQueryable<T> queryable)
+            {
+                if (httpContext == null) { throw new ArgumentNullException(nameof(httpContext)); }
 
-            double cantidad = await queryable.CountAsync();
-            httpContext.Response.Headers.Add("cantidadTotalRegistros", cantidad.ToString());
+                double cantidad = await queryable.CountAsync();
+                httpContext.Response.Headers.Add("cantidadTotalRegistros", cantidad.ToString());
+            }
         }
     }
-}
