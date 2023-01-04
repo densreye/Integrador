@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import * as Yup from 'yup'
 import FormGroupText from '../utils/FormGroupText'
 import Button from '../utils/Button'
-import { generoCreacionDTO } from "rubricas/generos.model";
+import { rubricaCreacionDTO } from "rubricas/rubricas.model";
 
 import { Formik, Field, FieldArray, FormikHelpers} from "formik";
 import { Container, Card, CardContent, Typography, Grid } from "@mui/material";
@@ -15,36 +15,6 @@ import { FormStepper } from "../prueba/FormStepper";
 
 
 export default function Pruebas(props: formularioPruebasProps){
-  const criterios = { criterio: "", insatisfactorio: "", desarrollo: "", satisfactorio: "", ejemplar: "" };
-    
-  interface valores{
-
-    nombre: string;
-    clasificacion:string;
-    criteriOBJ: Array<{
-        criterio: string;
-        insatisfactorio: string;
-        desarrollo: string;
-        satisfactorio: string;
-        ejemplar: string;
-    }>;
-    
-    }
-
-    const initialValues: valores = {
-        nombre: "",
-        clasificacion: "",
-        criteriOBJ: [{   
-                  
-            criterio: "",
-            insatisfactorio: "",
-            desarrollo: "",
-            satisfactorio: "",
-            ejemplar: "",
-        }],
-        
-        
-    };
 
   return (
     <Container sx={{ bgcolor: "#87c1ff4d", paddingY: 3, marginTop: 5 }}>
@@ -101,7 +71,7 @@ export default function Pruebas(props: formularioPruebasProps){
                            
                           {index > 0 && (
                             <Grid item md={1.5}>
-                              <Button  onClick={() => remove(index)}>
+                              <Button  onClick={() => remove(index)} className="btn btn-danger">
                                 Borrar
                               </Button>
                             </Grid>
@@ -109,11 +79,10 @@ export default function Pruebas(props: formularioPruebasProps){
                         </>
                       ))}{" "}
                       <Grid item xs={12}>
-                        <Button onClick={() => push(initialValues.criteriOBJ.push)}>
+                        <Button onClick={() => push(props.modelo.criteriOBJ.push) } >
                           Añadir Criterio
                         </Button>
-                        <Button  
-                        type="submit">Salvar</Button>
+ 
                       </Grid>
                     </Grid>
                   )}
@@ -130,6 +99,6 @@ export default function Pruebas(props: formularioPruebasProps){
 
 
 interface formularioPruebasProps{
-    modelo: generoCreacionDTO;
-    onSubmit(valores: generoCreacionDTO, accion: FormikHelpers<generoCreacionDTO>): void;
+    modelo: rubricaCreacionDTO;
+    onSubmit(valores: rubricaCreacionDTO, accion: FormikHelpers<rubricaCreacionDTO>): void;
 }

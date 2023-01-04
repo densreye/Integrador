@@ -2,26 +2,26 @@ import axios, { AxiosResponse } from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Cargando from "utils/Cargando";
-import { urlGeneros } from "utils/endpoints";
-// import { useParams } from "react-router-dom";
+import { urlRubricas } from "utils/endpoints";
+ 
 import FormularioRubricas from "./FormularioRubrica";
-import { generoCreacionDTO, generoDTO } from "./generos.model";
+import { rubricaCreacionDTO} from "./rubricas.model";
 
 export default function EditarGenero() {
 
     const { id }: any = useParams();
-    const [genero,setGenero]=useState<generoCreacionDTO>();
+    const [genero,setGenero]=useState<rubricaCreacionDTO>();
     const [errores,setErrores]=useState<string[]>([]);
     const history = useHistory();
     useEffect(()=>{
-        axios.get(`${urlGeneros}/${id}`)
-        .then((respuesta:AxiosResponse<generoCreacionDTO>)=>{
+        axios.get(`${urlRubricas}/${id}`)
+        .then((respuesta:AxiosResponse<rubricaCreacionDTO>)=>{
             setGenero(respuesta.data)
         })
     })
-    async function editar(generoEditar:generoCreacionDTO) {
+    async function editar(generoEditar:rubricaCreacionDTO) {
         try{
-            await axios.put(`${urlGeneros}/${id}`,generoEditar);
+            await axios.put(`${urlRubricas}/${id}`,generoEditar);
             history.push('/rubricas')
         }
         catch(error){

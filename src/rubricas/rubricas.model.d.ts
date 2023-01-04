@@ -1,5 +1,5 @@
- 
-export interface generoCreacionDTO {
+const current = new Date();
+export interface rubricaCreacionDTO {
  
     nombre: string;
     clasificacion:string;
@@ -11,11 +11,11 @@ export interface generoCreacionDTO {
         ejemplar: string;
     }>;
     
-    fechaCreacion:string;
+    fechaCreacion:Date= `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     estado: boolean=false;
 }
 
-export interface generoDTO {
+export interface rubricaDTO {
     id: number;
     nombre: string;
     clasificacion:string;
@@ -27,7 +27,7 @@ export interface generoDTO {
         ejemplar: string;
     }>;
     
-    fechaCreacion:string;
+    fechaCreacion:Date= `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     estado: boolean=false;
 
 }

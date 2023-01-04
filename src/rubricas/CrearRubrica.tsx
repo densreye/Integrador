@@ -1,18 +1,19 @@
-import { urlGeneros } from "utils/endpoints";
+import { urlRubricas } from "utils/endpoints";
 import FormularioRubricas from "./FormularioRubrica";
 import axios from 'axios';
-import { generoCreacionDTO } from "./generos.model";
+import { rubricaCreacionDTO } from "./rubricas.model";
 import { useHistory } from "react-router-dom";
 import MostrarErrores from "utils/MostrarErrores";
 import { useState } from "react";
 
-export default function CrearGenero() {
+
+export default function CrearRubrica() {
     const history = useHistory();
     const [errores,setErrores] = useState<string[]>([]);
     
-    async function crear(genero: generoCreacionDTO) {
+    async function crear(rubrica: rubricaCreacionDTO) {
         try{
-           await axios.post(urlGeneros,genero) 
+           await axios.post(urlRubricas,rubrica) 
            history.push('/rubricas')
         }
         catch(error){
@@ -27,7 +28,7 @@ export default function CrearGenero() {
             <MostrarErrores/>
     
             <FormularioRubricas   modelo={{        
-            nombre: "",
+            nombre: " ",
             clasificacion: "",
             criteriOBJ: [{   
                   
@@ -37,7 +38,7 @@ export default function CrearGenero() {
             satisfactorio: "",
             ejemplar: "",
         }],
-            fechaCreacion:"",
+            fechaCreacion: new Date(),
             estado: false,
  
 

@@ -1,3 +1,5 @@
 const apiURL =process.env.REACT_APP_API_URL;
 
-export const urlGeneros= `${apiURL}/generos`
+export const urlRubricas= `${apiURL}/rubricas`
+export const urlCuentas= `${apiURL}/cuentas`
+export const urlNotificaciones= `${apiURL}/notificaciones`
