@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PeliculasAPI.Utilidades
+namespace RubricasAPI.Utilidades
 {
     public static class HttpContextExtensions
     {

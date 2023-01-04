@@ -1,18 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PeliculasAPI.Entidades;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using RubricasAPI.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-namespace PeliculasAPI
+namespace RubricasAPI
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
         }
-        public DbSet<Genero> Generos{get;set;}
+        public DbSet<Rubrica> Rubricas{get;set;}
 
     }
 }

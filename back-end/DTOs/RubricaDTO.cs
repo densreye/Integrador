@@ -1,14 +1,16 @@
-﻿namespace PeliculasAPI.DTOs
+﻿using System;
+
+namespace RubricasAPI.DTOs
 {
-    public class GeneroDTO
+    public class RubricaDTO
     {
         public int Id { get; set; }
         public string Nombre{ get; set; }
                 
         public string Clasificacion{ get; set; }
         public string Criterios{ get; set; }
-        public string FechaCreacion { get; set; }
+        public DateTime FechaCreacion { get; set; }
 
-        public string Estado { get; set; }
+        public bool Estado { get; set; }
     }
 }

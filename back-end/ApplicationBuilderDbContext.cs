@@ -1,4 +1,4 @@
-﻿namespace PeliculasAPI
+﻿namespace RubricasAPI
 {
     internal class ApplicationBuilderDbContext
     {

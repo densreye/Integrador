@@ -3,23 +3,26 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using PeliculasAPI.ApiBehavior;
-using PeliculasAPI.Controllers;
-using PeliculasAPI.Filtros;
+using RubricasAPI.ApiBehavior;
+using RubricasAPI.Controllers;
+using RubricasAPI.Filtros;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace PeliculasAPI
+namespace RubricasAPI
 {
     public class Startup
     {
@@ -45,7 +48,23 @@ namespace PeliculasAPI
                     .WithExposedHeaders(new string[] { "cantidadTotalRegistros" });
                 });
             });
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(opciones =>
+                opciones.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey= true,
+                    IssuerSigningKey=new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(Configuration["llavejwt"])),
+                    ClockSkew=TimeSpan.Zero
+                });
+
             services.AddResponseCaching();
             services.AddControllers(options =>
             {
@@ -55,7 +74,7 @@ namespace PeliculasAPI
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PeliculasAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RubricasAPI", Version = "v1" });
             });
         }
 
@@ -87,7 +106,7 @@ namespace PeliculasAPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PeliculasAPI v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RubricasAPI v1"));
             }
 
             app.UseHttpsRedirection();

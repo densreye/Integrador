@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "rAE2a66vr5441zM3VEifvr70y8sGVq4BKD05EE0OxZo=",
-  "Source": "PeliculasAPI",
-  "BasePath": "_content/PeliculasAPI",
+  "Hash": "FxAbo6aFNoUL9dLkTNs7hp41e9dDcf2SbClX0rfCY60=",
+  "Source": "RubricasAPI",
+  "BasePath": "_content/RubricasAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

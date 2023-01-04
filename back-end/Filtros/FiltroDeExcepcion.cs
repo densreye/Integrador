@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PeliculasAPI.Filtros
+namespace RubricasAPI.Filtros
 {
     public class FiltroDeExcepcion: ExceptionFilterAttribute
     {

@@ -1,20 +1,20 @@
 ﻿using AutoMapper;
  
-using PeliculasAPI.DTOs;
-using PeliculasAPI.Entidades;
+using RubricasAPI.DTOs;
+using RubricasAPI.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PeliculasAPI.Utilidades
+namespace RubricasAPI.Utilidades
 {
     public class AutoMapperProfiles : Profile
     {
         public AutoMapperProfiles()
         {
-            CreateMap<Genero, GeneroDTO>().ReverseMap();
-            CreateMap<GeneroCreacionDTO,Genero>();
+            CreateMap<Rubrica, RubricaDTO>().ReverseMap();
+            CreateMap<RubricaCreacionDTO,Rubrica>();
         }
     }
 }

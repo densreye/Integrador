@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PeliculasAPI.Filtros
+namespace RubricasAPI.Filtros
 {
     public class ParsearBadRequests : IActionFilter
     {
@@ -25,6 +27,12 @@ namespace PeliculasAPI.Filtros
                 if (resultadoActual.Value is string)
                 {
                     respuesta.Add(resultadoActual.Value.ToString());
+                }
+                else if (resultadoActual.Value is IEnumerable<IdentityError> errores) {
+                    foreach (var error in errores) {
+                        respuesta.Add(error.Description);
+                    }
+                
                 }
                 else
                 {

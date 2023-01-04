@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PeliculasAPI.ApiBehavior
+namespace RubricasAPI.ApiBehavior
 {
     public static class BehaviorBadRequests
     {
