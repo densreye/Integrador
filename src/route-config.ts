@@ -10,6 +10,7 @@ import Login from "Auth/Login";
 import IndiceNotificaciones from "notificacion/IndiceNotificaciones";
 import LandingPage from "LandingPage";
 import IndiceUsuarios from "Auth/IndiceUsuarios";
+import IndiceAprobacion from "Aprobacion/aprobacion";
 
 const rutas = [
     {path: '/rubricas/crear', componente: CrearRubrica, exact: true,esAdmin:true},
@@ -19,8 +20,10 @@ const rutas = [
     {path: '/registro', componente: Registro, exact: true},
     {path: '/login', componente: Login  },
     {path: '/usuarios', componente: IndiceUsuarios, esAdmin: true},
+    {path: '/aprobaciones', componente: IndiceAprobacion, exact: true,esAdmin:true},
     {path: '/', componente: LandingPage, exact: true},
     {path: '*', componente: RedireccionarALanding},
+    
     
 ];
 

@@ -27,17 +27,19 @@ export default function CrearRubrica() {
             <h3>Crear Rúbrica</h3>
             <MostrarErrores/>
     
-            <FormularioRubricas   modelo={{        
+            <FormularioRubricas   
+            modelo={{        
             nombre: "",
+            criterios:"",
             clasificacion: "",
             criteriOBJ: [{   
                   
-            criterio: "",
-            insatisfactorio: "",
-            desarrollo: "",
-            satisfactorio: "",
-            ejemplar: "",
-        }],
+                    criterio: "",
+                    insatisfactorio: "",
+                    desarrollo: "",
+                    satisfactorio: "",
+                    ejemplar: "",
+                }],
             fechaCreacion: new Date(),
             estado: false,
  

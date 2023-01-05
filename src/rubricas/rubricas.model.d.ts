@@ -3,7 +3,7 @@ export interface rubricaCreacionDTO {
  
     nombre: string;
     clasificacion:string;
-    criterios:number;
+    criterios:string;
     criteriOBJ: Array<{
         criterio: string;
         insatisfactorio: string;

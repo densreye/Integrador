@@ -5,7 +5,7 @@ import { urlRubricas } from "utils/endpoints";
 import ListadoGenerico from "utils/ListadoGenerico";
  
 import { rubricaDTO } from "rubricas/rubricas.model";
- 
+import { Container, Card, CardContent, Typography, Grid, Button } from "@mui/material";
 
 export default function IndiceNotificaciones() {
     const [generos,setGeneros]= useState<rubricaDTO[]>();
@@ -45,36 +45,41 @@ return (
  
  
             <div className="form-group" style={{width:'150px'}}>
-                <label> Registros por página: </label>
+                
  
             </div>
             <ListadoGenerico listado={generos}>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-            
-                  
-                            <th>Estado</th>
-              
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {generos?.map(genero=>
-                            <tr key={genero.id}>
-                                <td>
-                                    {genero.nombre}
-                                </td>
-                           
-                                <td>{genero.estado===false?<b>Pendiente</b> :<b>Aprobado</b>}</td>  
-                   
-                                <td>
-                                </td>
+            <Grid className="display: 'flex',flexDirection: 'column', alignItems: 'center', direction: 'column', justify: 'space-between'">
+                    <Card sx={{ marginTop:10 }}>
+                    <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
+                        <table className="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                    
+                        
+                                    <th>Estado</th>
+                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {generos?.map(genero=>
+                                    <tr key={genero.id}>
+                                        <td>
+                                            {genero.nombre}
+                                        </td>
+                                
+                                        <td>{genero.estado===false?<b>Pendiente</b> :<b>Aprobado</b>}</td>  
+                        
+                                        <td>
+                                        </td>
 
-                            </tr>)}
-                    </tbody>
-                </table>
-
+                                    </tr>)}
+                            </tbody>
+                        </table>
+                    </CardContent>
+                    </Card>
+             </Grid> 
             </ListadoGenerico>
  
         </>

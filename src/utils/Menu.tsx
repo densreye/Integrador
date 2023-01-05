@@ -43,6 +43,12 @@ export default function Menu() {
                                         Usuarios
                                     </NavLink>
                                     </li>
+                                    <li className="nav-item">
+                                    <NavLink className="nav-link" activeClassName={claseActiva} 
+                                    to="/aprobaciones">
+                                        Aprobación
+                                    </NavLink>
+                                    </li>
                                 </>        
 
                             }
