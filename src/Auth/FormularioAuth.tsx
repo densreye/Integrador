@@ -33,7 +33,7 @@ export default function FormularioAuth(props: formularioAuthProps){
                     <Grid container item xs={12} sm={6} className="padding: 10,alignItems: 'center',direction: 'column',justify: 'space-between'">
                     
                     <div className="display: 'flex',flexDirection: 'column',maxWidth: 500,minWidth: 400,paddingLeft: '10vh'">  
-                        <Card sx={{ marginTop:12 }}>
+                        <Card sx={{ marginTop:12 }} className="bg-light">
                         <CardContent sx={{ paddingY: 3, paddingX: 2 }}>
                             
                             <Typography variant="h3" >
@@ -46,9 +46,10 @@ export default function FormularioAuth(props: formularioAuthProps){
                         
                             <FormGroupText label="Email" campo="email" />
                             <FormGroupText label="Password" campo="password" type="password" />
-
-                            <Button disabled={formikProps.isSubmitting} type="submit">Enviar</Button>
-                            <Link className="btn btn-secondary" to="/">Cancelar</Link>
+                            <div className="mb-2">
+                                <Button disabled={formikProps.isSubmitting} type="submit">Iniciar Sesión</Button>
+                                <Link className="btn btn-secondary" to="/">Cancelar</Link>
+                            </div>
                         </CardContent>
                         </Card>
                     </div>   

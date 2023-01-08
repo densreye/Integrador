@@ -9,12 +9,18 @@ import { rubricaDTO } from "rubricas/rubricas.model";
 import confirmar from "utils/Confirmar";
 import Autorizado from "Auth/Autorizado";
 import confirmarEstado from "./confaprob";
+import Swal from "sweetalert2";
+
+import { Card, CardContent,} from "@mui/material";
+
 
 export default function IndiceAprobacion() {
     const [generos,setGeneros]= useState<rubricaDTO[]>();
     const [totalDePaginas,setTotalDePaginas]=useState(0);
     const [recordsPorPagina, setRecordsPorPagina]=useState(10);
     const [pagina,setPagina]=useState(1);
+
+   
     useEffect(()=>{
         cargarDatos();
 
@@ -32,14 +38,23 @@ export default function IndiceAprobacion() {
             setGeneros(respuesta.data);
         })
     }
-    async function cambioestado(id:number){
-        try{
-            await axios.put(`${urlRubricas}/${id}`,{estado:true})
-            
-            cargarDatos();
-        }catch(error){
-            console.log(error);
-        }
+
+    async function Aprobar(id: number, estado:boolean) {
+        await editarAprobar(`${urlRubricas}/${id}`, estado);
+    }
+
+    async function editarAprobar(url: string, estado:boolean) {
+        await axios.post(url, JSON.stringify(estado),
+            {
+                headers: { 'Content-Type': 'application/json' }
+            }
+        )
+
+        Swal.fire({
+            title: 'Exito',
+            text: 'Operación realizada con éxito',
+            icon: 'success'
+        })
     }
 
 return (
@@ -71,6 +86,8 @@ return (
                     <option value={50}>50</option>
                 </select>
             </div>
+            <Card sx={{ marginTop:10 }}>
+            <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
             <ListadoGenerico listado={generos}>
                 <table className="table table-striped">
                     <thead>
@@ -97,7 +114,7 @@ return (
                                     autorizado={<> <td>
                                 
                                     <Button
-                                    onClick={()=>confirmarEstado(()=>cambioestado(genero.id))}
+                                    onClick={()=>confirmarEstado(()=> Aprobar(genero.id, true))}
                                     className="btn btn-success">Aprobar</Button>
                                      </td>
                                     </>}
@@ -105,10 +122,13 @@ return (
                             </tr>)}
                     </tbody>
                 </table>
-
+                                        
             </ListadoGenerico>
+            
             <Paginacion cantidadTotalDePaginas={totalDePaginas}
             paginaActual={pagina} onChange={nuevaPagina=> setPagina(nuevaPagina)}/>
+            </CardContent>
+            </Card>
         </>
 
     )

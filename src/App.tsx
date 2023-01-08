@@ -8,6 +8,7 @@ import configurarValidaciones from './validaciones'
 import AutenticacionContext from 'Auth/AutenticacionContext';
 import { claim } from 'Auth/auth.model';
 import { obtenerClaims } from 'Auth/manejadorJWT';
+
  
 
 configurarValidaciones();
@@ -45,7 +46,9 @@ function App() {
                 </Route>)}
             </Switch>
           </div>
+          
         </AutenticacionContext.Provider>
+        
 
       </BrowserRouter>
     </>

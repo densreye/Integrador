@@ -9,6 +9,8 @@ import { rubricaDTO } from "./rubricas.model";
 import confirmar from "utils/Confirmar";
 import Autorizado from "Auth/Autorizado";
 
+import { Card, CardContent,} from "@mui/material";
+
 export default function IndiceRubricas() {
     const [generos,setGeneros]= useState<rubricaDTO[]>();
     const [totalDePaginas,setTotalDePaginas]=useState(0);
@@ -42,20 +44,29 @@ export default function IndiceRubricas() {
 
 return (
         <>
+            
             <h3>Rúbricas</h3>
 
             
             <Autorizado role="admin" autorizado={
             
             <>
-            <Link className="btn btn-primary"to="rubricas/crear">Crear Rúbrica</Link><br></br>
+            <br></br>
+            
+            <Link className="btn btn-primary" to="rubricas/crear" >Crear Rúbrica</Link>
+            <br></br>
+            <br></br>
+            
             <b>Estás autorizado</b>
+            <br></br>
             </>}
             
                 noAutorizado={<b>No autorizado</b>}
                 
             />
+            
             <div className="form-group" style={{width:'150px'}}>
+            <br></br>
                 <label> Registros por página: </label>
                 <select 
                     defaultValue={10}
@@ -69,7 +80,10 @@ return (
                     <option value={50}>50</option>
                 </select>
             </div>
+            <Card sx={{ marginTop:10 }}>
+            <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
             <ListadoGenerico listado={generos}>
+                
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -106,10 +120,13 @@ return (
                             </tr>)}
                     </tbody>
                 </table>
-
+                                      
             </ListadoGenerico>
             <Paginacion cantidadTotalDePaginas={totalDePaginas}
             paginaActual={pagina} onChange={nuevaPagina=> setPagina(nuevaPagina)}/>
+            </CardContent>    
+            </Card>
+        
         </>
 
     )
