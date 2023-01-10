@@ -16,7 +16,7 @@ export default function Menu() {
     return (
         <>
         
-        <nav className="navbar navbar-expand-lg navbar-light bg-light, p-3 mb-2 bg-primary text-white ">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light, p-3 mb-2  text-white " style={{ backgroundColor: '#1e19ff'}}>
             <div className="container-fluid">
                 
                 <NavLink className="navbar-brand text-white" 
@@ -51,6 +51,12 @@ export default function Menu() {
                                     <NavLink className="nav-link text-white" activeClassName={claseActiva} 
                                     to="/aprobaciones">
                                         Aprobación
+                                    </NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                    <NavLink className="nav-link text-white" activeClassName={claseActiva} 
+                                    to="/rutasmedicion">
+                                        Rutas de Medición
                                     </NavLink>
                                     </li>
                                 </>        

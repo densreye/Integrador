@@ -40,6 +40,7 @@ export default function IndiceNotificaciones() {
 
 return (
         <>
+        
             <h3>Notificaciones</h3>
 
  

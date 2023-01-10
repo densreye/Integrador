@@ -9,6 +9,7 @@ import AutenticacionContext from 'Auth/AutenticacionContext';
 import { claim } from 'Auth/auth.model';
 import { obtenerClaims } from 'Auth/manejadorJWT';
 
+import { Container, Card, CardContent, Typography, Grid, Button } from "@mui/material";
  
 
 configurarValidaciones();
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <>
+    <Container style={{ backgroundColor: '#eaeaea', overflow: 'hidden',  width:"500%"}}>
       <BrowserRouter>
 
         <AutenticacionContext.Provider value={{ claims, actualizar }}>
@@ -51,6 +53,7 @@ function App() {
         
 
       </BrowserRouter>
+    </Container>
     </>
 
   );

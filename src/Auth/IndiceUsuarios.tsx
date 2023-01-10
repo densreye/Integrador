@@ -5,7 +5,7 @@ import confirmar from "utils/Confirmar";
 import { urlCuentas } from "utils/endpoints";
 import IndiceEntidad from "utils/IndiceEntidad";
 import { usuarioDTO } from "./auth.model";
-
+import { Card, CardContent,} from "@mui/material";
 export default function IndiceUsuarios() {
 
     async function hacerAdmin(id: string) {
@@ -36,6 +36,9 @@ export default function IndiceUsuarios() {
             titulo="Usuarios"
         >
             {usuarios => <>
+                <Card sx={{ marginTop:10 }}>
+                <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
+                <table className="table table-striped">
                 <thead>
                     <tr>
                         <th>Correo</th>
@@ -60,6 +63,9 @@ export default function IndiceUsuarios() {
 
                     </tr>)}
                 </tbody>
+                </table>
+                </CardContent>
+                </Card>
             </>}
         </IndiceEntidad>
     )

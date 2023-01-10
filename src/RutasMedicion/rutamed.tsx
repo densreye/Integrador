@@ -8,13 +8,13 @@ import Paginacion from "utils/Paginacion";
 import { rubricaDTO } from "rubricas/rubricas.model";
 import confirmar from "utils/Confirmar";
 import Autorizado from "Auth/Autorizado";
-import confirmarEstado from "./confaprob";
+
 import Swal from "sweetalert2";
 
 import { Card, CardContent,} from "@mui/material";
 
 
-export default function IndiceAprobacion() {
+export default function RutaMedicion() {
     const [generos,setGeneros]= useState<rubricaDTO[]>();
     const [totalDePaginas,setTotalDePaginas]=useState(0);
     const [recordsPorPagina, setRecordsPorPagina]=useState(10);
@@ -41,17 +41,10 @@ export default function IndiceAprobacion() {
     }
 
    
-    function Aprobar(id:number, status: boolean){
-
-         axios.put(`${urlRubricas}/${id}`, {     })
-        cargarDatos();
-
-    }
-
 
 return (
         <>
-            <h3>Rúbricas para aprobar</h3>
+            <h3>Rutas de Medición</h3>
 
             
             <Autorizado role="admin" autorizado={
@@ -64,6 +57,7 @@ return (
                 noAutorizado={<b>No autorizado</b>}
                 
             />
+            
             <div className="form-group" style={{width:'150px'}}>
                 <label> Registros por página: </label>
                 <select 
@@ -80,50 +74,31 @@ return (
             </div>
             <Card sx={{ marginTop:10 }}>
             <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
-            <ListadoGenerico listado={generos}>
+            
+            
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Criterios</th>
+                            <th>Carrera</th>
+                            <th>Materia</th>
                             <th>Clasificación</th>
-                            <th>Fecha Creación</th>
+                            <th>Código</th>
                             <th>Estado</th>
-                            <Autorizado role="admin" autorizado={ <th>Acción</th>}/>
+                            <th>Fecha Creación</th>
+                            
+                            
                         </tr>
                     </thead>
-                    <tbody>
-                        {generos?.map(genero=>
-                            <tr key={genero.id}>
-                                <td>
-                                    {genero.nombre}
-                                </td>
-                                <td>CRITERIOS</td>
-                                <td>{genero.clasificacion}</td>
-                                <td>{genero.fechaCreacion}</td>
-                                <td>{genero.estado===false?<b>Pendiente</b> :<b>Aprobado</b>}</td>
-                                <Autorizado role="admin"
-                                    autorizado={<> <td>
-                                
-                                    <Button
-                                    onClick={()=>confirmarEstado(()=> Aprobar(genero.id, true))}
-                                    className="btn btn-success">Aprobar</Button>
-
-                                    
-                                     </td>
-                                    </>}
-                                    />
-                            </tr>)}
-                    </tbody>
+                    
                 </table>
                                         
-            </ListadoGenerico>
-            
+          
             <Paginacion cantidadTotalDePaginas={totalDePaginas}
             paginaActual={pagina} onChange={nuevaPagina=> setPagina(nuevaPagina)}/>
             </CardContent>
             </Card>
+            
         </>
-
+            
     )
 }
