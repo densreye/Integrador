@@ -37,15 +37,16 @@ export default function Menu() {
                                 <>
                                     <li className="nav-item">
                                     <NavLink className="nav-link text-white" activeClassName={claseActiva} 
-                                    to="/notificaciones">
-                                        Notificaciones
+                                    to="/rutasmedicion">
+                                        Rutas de Medición
                                     </NavLink>
                                     </li>
                                     <li className="nav-item">
                                     <NavLink className="nav-link text-white" activeClassName={claseActiva} 
-                                    to="/usuarios">
-                                        Usuarios
+                                    to="/notificaciones">
+                                        Notificaciones
                                     </NavLink>
+                                    
                                     </li>
                                     <li className="nav-item">
                                     <NavLink className="nav-link text-white" activeClassName={claseActiva} 
@@ -55,10 +56,12 @@ export default function Menu() {
                                     </li>
                                     <li className="nav-item">
                                     <NavLink className="nav-link text-white" activeClassName={claseActiva} 
-                                    to="/rutasmedicion">
-                                        Rutas de Medición
+                                    to="/usuarios">
+                                        Usuarios
                                     </NavLink>
                                     </li>
+                                    
+                                    
                                 </>        
 
                             }
