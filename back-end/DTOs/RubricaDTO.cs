@@ -11,6 +11,6 @@ namespace RubricasAPI.DTOs
         public string Criterios{ get; set; }
         public DateTime FechaCreacion { get; set; }
 
-        public bool Estado { get; set; }
+        public string Estado { get; set; }
     }
 }

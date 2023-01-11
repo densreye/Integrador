@@ -9,11 +9,11 @@ using RubricasAPI;
 
 #nullable disable
 
-namespace PeliculasAPI.Migrations
+namespace RubricasAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230103082437_SistemaDeUsuarios")]
-    partial class SistemaDeUsuarios
+    [Migration("20230111085504_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -237,8 +237,8 @@ namespace PeliculasAPI.Migrations
                     b.Property<string>("Criterios")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Estado")
-                        .HasColumnType("bit");
+                    b.Property<string>("Estado")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaCreacion")
                         .HasColumnType("datetime2");

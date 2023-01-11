@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H484Va+4McK8W03LDOg/FYOco4Vd1PykldAzj6fdfaSSu84OsOBUiYxG0fco5M3pXnTw0ob5svyLLOkURkK4XQ==",
+  "dgSpecHash": "tJPo5E47y+QfUecbTK+5/ENCM3x34etzSwx2JGiDp+I+WkpjTLCXEk7LA/t4QVezWR1Jfem6IB6JjrySrJmHQQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\VICTOR\\Desktop\\INTEGRADORA FINAL\\IntegradorAPI\\Integrador\\back-end\\RubricasAPI.csproj",
+  "projectFilePath": "C:\\Users\\VICTOR\\Desktop\\API\\Integrador\\back-end\\RubricasAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\VICTOR\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\VICTOR\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

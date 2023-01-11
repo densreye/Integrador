@@ -4222,11 +4222,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\VICTOR\\Desktop\\INTEGRADORA FINAL\\IntegradorAPI\\Integrador\\back-end\\RubricasAPI.csproj",
+      "projectUniqueName": "C:\\Users\\VICTOR\\Desktop\\API\\Integrador\\back-end\\RubricasAPI.csproj",
       "projectName": "RubricasAPI",
-      "projectPath": "C:\\Users\\VICTOR\\Desktop\\INTEGRADORA FINAL\\IntegradorAPI\\Integrador\\back-end\\RubricasAPI.csproj",
+      "projectPath": "C:\\Users\\VICTOR\\Desktop\\API\\Integrador\\back-end\\RubricasAPI.csproj",
       "packagesPath": "C:\\Users\\VICTOR\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\VICTOR\\Desktop\\INTEGRADORA FINAL\\IntegradorAPI\\Integrador\\back-end\\obj\\",
+      "outputPath": "C:\\Users\\VICTOR\\Desktop\\API\\Integrador\\back-end\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\VICTOR\\AppData\\Roaming\\NuGet\\NuGet.Config",
