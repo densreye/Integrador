@@ -53,7 +53,7 @@ return (
             <>
             <br></br>
             
-            <Link className="btn btn-primary" to="rubricas/crear" >Crear Rúbrica</Link>
+            <Link className="btn btn-primary" style={{ backgroundColor: '#212fff'}} to="rubricas/crear" >Crear Rúbrica</Link>
             <br></br>
             <br></br>
             
@@ -84,7 +84,7 @@ return (
             <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
             <ListadoGenerico listado={generos}>
                 
-                <table className="table table-striped">
+                <table className="table table-bordered">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -108,7 +108,7 @@ return (
                                 <Autorizado role="admin"
                                     autorizado={<> <td>
                                 
-                                    <Link className="btn btn-success" to={`/rubricas/editar/${genero.id}`}>
+                                    <Link className="btn btn-success" style={{ backgroundColor: '#212fff'}} to={`/rubricas/editar/${genero.id}`}>
                                         Editar
                                     </Link>
                                     <Button

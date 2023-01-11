@@ -53,7 +53,7 @@ return (
             <Grid className="display: 'flex',flexDirection: 'column', alignItems: 'center', direction: 'column', justify: 'space-between'">
                     <Card sx={{ marginTop:10 }}>
                     <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
-                        <table className="table table-striped">
+                        <table className="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -72,9 +72,6 @@ return (
                                 
                                         <td>{genero.estado===false?<b>Pendiente</b> :<b>Aprobado</b>}</td>  
                         
-                                        <td>
-                                        </td>
-
                                     </tr>)}
                             </tbody>
                         </table>

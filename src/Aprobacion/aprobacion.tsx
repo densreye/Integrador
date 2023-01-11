@@ -49,6 +49,29 @@ export default function IndiceAprobacion() {
     }
 
 
+    async function aprobarEstado(id: number) {
+        await EditarEst(`${urlRubricas}/${id}`, id);
+    }
+
+    async function RechazarEst(id: number) {
+        await EditarEst(`${urlRubricas}/${id}`, id);
+    }
+
+    async function EditarEst(url: string, id: number) {
+        await axios.post(url, JSON.stringify(id),
+            {
+                headers: { 'Content-Type': 'application/json' }
+            }
+        )
+
+        Swal.fire({
+            title: 'Exito',
+            text: 'Operación realizada con éxito',
+            icon: 'success'
+        })
+    }
+
+
 return (
         <>
             <h3>Rúbricas para aprobar</h3>
@@ -81,7 +104,7 @@ return (
             <Card sx={{ marginTop:10 }}>
             <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
             <ListadoGenerico listado={generos}>
-                <table className="table table-striped">
+                <table className="table table-bordered">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -106,11 +129,11 @@ return (
                                     autorizado={<> <td>
                                 
                                     <Button
-                                    onClick={()=>confirmarEstado(()=> Aprobar(genero.id, true))}
-                                    className="btn btn-success">Aprobar</Button>
+                                    onClick={()=>confirmarEstado(()=> aprobarEstado(genero.id), 
+                                        `¿Desea aprobar ${genero.nombre} ?`, 'Realizar')}
+                                    style={{ backgroundColor: '#212fff'}}>Aprobar</Button>
 
-                                    
-                                     </td>
+                                    </td>
                                     </>}
                                     />
                             </tr>)}

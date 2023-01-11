@@ -38,11 +38,11 @@ export default function IndiceUsuarios() {
             {usuarios => <>
                 <Card sx={{ marginTop:10 }}>
                 <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
-                <table className="table table-striped">
+                <table className="table table-bordered">
                 <thead>
                     <tr>
                         <th>Correo</th>
-                        <th></th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +53,8 @@ export default function IndiceUsuarios() {
                         <td>
                             <Button
                                 onClick={() => confirmar(() => hacerAdmin(usuario.id),
-                                    `¿Desea hacer a ${usuario.email} admin?`, 'Realizar')}>
+                                    `¿Desea hacer a ${usuario.email} admin?`, 'Realizar')}
+                                    style={{ backgroundColor: '#212fff'}}    >
                                 Hacer Admin</Button>
                             <Button className="btn btn-danger" style={{ marginLeft: '2rem' }}
                                 onClick={() => confirmar(() => removerAdmin(usuario.id),

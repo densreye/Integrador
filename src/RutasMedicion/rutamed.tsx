@@ -76,7 +76,7 @@ return (
             <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
             
             
-                <table className="table table-striped">
+                <table className="table table-bordered">
                     <thead>
                         <tr>
                             <th>Carrera</th>
