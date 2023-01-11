@@ -1,6 +1,7 @@
+import React from 'react';
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import Button from "utils/Button";
 import { urlRubricas } from "utils/endpoints";
 import ListadoGenerico from "utils/ListadoGenerico";
@@ -10,17 +11,21 @@ import confirmar from "utils/Confirmar";
 import Autorizado from "Auth/Autorizado";
 import confirmarEstado from "./confaprob";
 import Swal from "sweetalert2";
+ 
 
 import { Card, CardContent,} from "@mui/material";
 
 
 export default function IndiceAprobacion() {
+    const { id }: any = useParams();
+
     const [generos,setGeneros]= useState<rubricaDTO[]>();
     const [totalDePaginas,setTotalDePaginas]=useState(0);
     const [recordsPorPagina, setRecordsPorPagina]=useState(10);
     const [pagina,setPagina]=useState(1);
     const [modificar, setmodificar]=useState<rubricaDTO>();
 
+    const history = useHistory();
    
     useEffect(()=>{
         cargarDatos();
@@ -40,37 +45,36 @@ export default function IndiceAprobacion() {
         })
     }
 
-   
-    function Aprobar(id:number, status: boolean){
 
-         axios.put(`${urlRubricas}/${id}`, {     })
-        cargarDatos();
 
+
+    async function aprobarEstado(rubricaEditar:rubricaDTO) {
+        console.log("BOTON APROBADO",rubricaEditar)
+        rubricaEditar.estado="Aprobado";
+        try{
+            await axios.put(`${urlRubricas}/${rubricaEditar.id}`,rubricaEditar);
+            history.push('/rubricas')
+        }
+        catch(error){
+            //setErrores(error.response.data)
+            console.log(error);
+        }
+        
     }
-
-
-    async function aprobarEstado(id: number) {
-        await EditarEst(`${urlRubricas}/${id}`, id);
+ 
+    async function rechazarEstado(rubricaEditar:rubricaDTO) {
+        console.log("BOTON Rechazado",rubricaEditar)
+        rubricaEditar.estado="Rechazado";
+        try{
+            await axios.put(`${urlRubricas}/${rubricaEditar.id}`,rubricaEditar);
+            history.push('/rubricas')
+        }
+        catch(error){
+            //setErrores(error.response.data)
+            console.log(error);
+        }
+        
     }
-
-    async function RechazarEst(id: number) {
-        await EditarEst(`${urlRubricas}/${id}`, id);
-    }
-
-    async function EditarEst(url: string, id: number) {
-        await axios.post(url, JSON.stringify(id),
-            {
-                headers: { 'Content-Type': 'application/json' }
-            }
-        )
-
-        Swal.fire({
-            title: 'Exito',
-            text: 'Operación realizada con éxito',
-            icon: 'success'
-        })
-    }
-
 
 return (
         <>
@@ -102,7 +106,7 @@ return (
                 </select>
             </div>
             <Card sx={{ marginTop:10 }}>
-            <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
+            <CardContent sx={{ paddingY: 4, paddingX: 1 }}>
             <ListadoGenerico listado={generos}>
                 <table className="table table-bordered">
                     <thead>
@@ -117,26 +121,35 @@ return (
                     </thead>
                     <tbody>
                         {generos?.map(genero=>
-                            <tr key={genero.id}>
-                                <td>
+                            <tr key={genero.id}><td>
                                     {genero.nombre}
                                 </td>
                                 <td>CRITERIOS</td>
                                 <td>{genero.clasificacion}</td>
                                 <td>{genero.fechaCreacion}</td>
-                                <td>{genero.estado===false?<b>Pendiente</b> :<b>Aprobado</b>}</td>
-                                <Autorizado role="admin"
-                                    autorizado={<> <td>
-                                
+                                <td>{(() => {
+                                    switch (genero.estado) {
+                                    case "":   return <b>Pendiente</b>;
+                                    case "Pendiente": return <b>Pendiente</b>;
+                                    case "Aprobado":  return <b>Aprobado</b>;
+                                    case "Rechazado":  return <b>Rechazado</b>;
+                                    default:      return <b>Pendiente</b>;
+                                    }
+                                })()}</td><td><Autorizado role="admin"
+                                    autorizado={<>  
+                              
                                     <Button
-                                    onClick={()=>confirmarEstado(()=> aprobarEstado(genero.id), 
+                                    onClick={()=>confirmarEstado(()=> aprobarEstado(genero), 
                                         `¿Desea aprobar ${genero.nombre} ?`, 'Realizar')}
-                                    style={{ backgroundColor: '#212fff'}}>Aprobar</Button>
-
-                                    </td>
+                                        style={{ backgroundColor: '#212fff'}}   >Aprobar</Button>
+                                    <Button
+                                    onClick={()=>confirmarEstado(()=> rechazarEstado(genero), 
+                                        `¿ Seguro desea rechazar la rúbrica: ${genero.nombre} ?`, 'Realizar')}
+                                        className="btn btn-danger" >Rechazar</Button>
+                                     
                                     </>}
-                                    />
-                            </tr>)}
+                                /></td>
+                                </tr>)}
                     </tbody>
                 </table>
                                         

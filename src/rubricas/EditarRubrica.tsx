@@ -13,13 +13,18 @@ export default function EditarGenero() {
     const [rubrica,setRubrica]=useState<rubricaCreacionDTO>();
     const [errores,setErrores]=useState<string[]>([]);
     const history = useHistory();
+
+    
     useEffect(()=>{
         axios.get(`${urlRubricas}/${id}`)
         .then((respuesta:AxiosResponse<rubricaCreacionDTO>)=>{
             setRubrica(respuesta.data)
         })
     })
+
+
     async function editar(rubricaEditar:rubricaCreacionDTO) {
+        
         try{
             await axios.put(`${urlRubricas}/${id}`,rubricaEditar);
             history.push('/rubricas')
@@ -30,6 +35,8 @@ export default function EditarGenero() {
         }
         
     }
+
+
     return (
         <>
             <h3>Editar Rúbrica</h3>

@@ -9,7 +9,7 @@ import { rubricaDTO } from "./rubricas.model";
 import confirmar from "utils/Confirmar";
 import Autorizado from "Auth/Autorizado";
 
-import { Card, CardContent,} from "@mui/material";
+import { Card, CardContent,Grid} from "@mui/material";
 
 export default function IndiceRubricas() {
     const [generos,setGeneros]= useState<rubricaDTO[]>();
@@ -80,10 +80,11 @@ return (
                     <option value={50}>50</option>
                 </select>
             </div>
-            <Card sx={{ marginTop:10 }}>
-            <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
+   
             <ListadoGenerico listado={generos}>
-                
+            <Grid className="display: 'flex',flexDirection: 'column', alignItems: 'center', direction: 'column', justify: 'space-between'">
+                    <Card sx={{ marginTop:10 }}>
+                    <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
                 <table className="table table-bordered">
                     <thead>
                         <tr>
@@ -97,35 +98,70 @@ return (
                     </thead>
                     <tbody>
                         {generos?.map(genero=>
-                            <tr key={genero.id}>
-                                <td>
+                            <tr key={genero.id}><td>
                                     {genero.nombre}
                                 </td>
                                 <td>CRITERIOS</td>
                                 <td>{genero.clasificacion}</td>
                                 <td>{genero.fechaCreacion}</td>
-                                <td>{genero.estado===false?<b>Pendiente</b> :<b>Aprobado</b>}</td>
+                                <td>{(() => {
+                                    switch (genero.estado) {
+                                    case "":   return <b>Pendiente</b>;
+                                    case "Pendiente": return <b>Pendiente</b>;
+                                    case "Aprobado":  return <b>Aprobado</b>;
+                                    case "Rechazado":  return <b>Rechazado</b>;
+                                    default:      return <b>Pendiente</b>;
+                                    }
+                                })()}</td>
+
                                 <Autorizado role="admin"
-                                    autorizado={<> <td>
-                                
-                                    <Link className="btn btn-success" style={{ backgroundColor: '#212fff'}} to={`/rubricas/editar/${genero.id}`}>
-                                        Editar
-                                    </Link>
-                                    <Button
-                                    onClick={()=>confirmar(()=>borrar(genero.id))}
-                                    className="btn btn-danger">Borrar</Button>
-                                     </td>
-                                    </>}
+                                    autorizado={
+                                    <td>{(() => {
+                                        switch (genero.estado) {
+                                        case "":   return  <><Link className='btn btn-primary'
+                                        style={{ backgroundColor: '#212fff'}} 
+                                        to={`/rubricas/editar/${genero.id}`}>
+                                            Editar
+                                        </Link>
+                                        <Button
+                                        onClick={()=>confirmar(()=>borrar(genero.id))}
+                                        className="btn btn-danger">Borrar</Button></>;
+                                        case "Pendiente": return <><Link className='btn btn-primary'
+                                                            style={{ backgroundColor: '#212fff'}} 
+                                                            to={`/rubricas/editar/${genero.id}`}>
+                                                                Editar
+                                                            </Link>
+                                                            <Button
+                                                            onClick={()=>confirmar(()=>borrar(genero.id))}
+                                                            className="btn btn-danger">Borrar</Button>
+                                                            </>;
+                                        case "Aprobado":  return <b> </b>;
+                                        case "Rechazado":  return <><Link className='btn btn-primary' 
+                                                        style={{ backgroundColor: '#212fff'}} 
+                                                        to={`/rubricas/editar/${genero.id}`}>
+                                                            Editar
+                                                        </Link>
+                                                        <Button
+                                                        onClick={()=>confirmar(()=>borrar(genero.id))}
+                                                        className="btn btn-danger">Borrar</Button></>;
+                                        }
+                                        
+                                    })()}</td>
+                                    }
                                     />
                             </tr>)}
                     </tbody>
                 </table>
-                                      
+                </CardContent>
+                <Paginacion cantidadTotalDePaginas={totalDePaginas}
+            paginaActual={pagina} onChange={nuevaPagina=> setPagina(nuevaPagina)}/>  
+                </Card>
+             </Grid>      
+                         
+    
             </ListadoGenerico>
-            <Paginacion cantidadTotalDePaginas={totalDePaginas}
-            paginaActual={pagina} onChange={nuevaPagina=> setPagina(nuevaPagina)}/>
-            </CardContent>    
-            </Card>
+
+  
         
         </>
 

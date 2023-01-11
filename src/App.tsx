@@ -32,7 +32,7 @@ function App() {
 
   return (
     <>
-    <Container style={{ backgroundColor: '#eaeaea', overflow: 'hidden',  width:"500%"}}>
+   
       <BrowserRouter>
 
         <AutenticacionContext.Provider value={{ claims, actualizar }}>
@@ -53,7 +53,7 @@ function App() {
         
 
       </BrowserRouter>
-    </Container>
+   
     </>
 
   );

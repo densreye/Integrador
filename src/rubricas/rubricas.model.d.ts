@@ -13,7 +13,7 @@ export interface rubricaCreacionDTO {
     }>;
     
     fechaCreacion:Date= `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-    estado: boolean=false;
+    estado: string="Pendiente";
 }
 
 export interface rubricaDTO {
@@ -30,6 +30,6 @@ export interface rubricaDTO {
     }>;
     
     fechaCreacion:Date= `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-    estado: boolean=false;
+    estado: string="Pendiente";
 
 }

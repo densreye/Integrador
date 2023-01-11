@@ -5,12 +5,14 @@ import { urlRubricas } from "utils/endpoints";
 import ListadoGenerico from "utils/ListadoGenerico";
  
 import { rubricaDTO } from "rubricas/rubricas.model";
-import { Container, Card, CardContent, Typography, Grid, Button } from "@mui/material";
+import { Container, Card, CardContent, Typography, Grid, Button,Alert, AlertTitle } from "@mui/material";
+import Paginacion from "utils/Paginacion";
 
+ 
 export default function IndiceNotificaciones() {
     const [generos,setGeneros]= useState<rubricaDTO[]>();
     const [totalDePaginas,setTotalDePaginas]=useState(0);
-    const [recordsPorPagina, setRecordsPorPagina]=useState(3);
+    const [recordsPorPagina, setRecordsPorPagina]=useState(10);
     const [pagina,setPagina]=useState(1);
     useEffect(()=>{
         cargarDatos();
@@ -45,37 +47,53 @@ return (
 
  
  
-            <div className="form-group" style={{width:'150px'}}>
-                
- 
-            </div>
+     
             <ListadoGenerico listado={generos}>
             <Grid className="display: 'flex',flexDirection: 'column', alignItems: 'center', direction: 'column', justify: 'space-between'">
                     <Card sx={{ marginTop:10 }}>
                     <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
-                        <table className="table table-bordered">
+                      
+                        <table className="table">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                    
-                        
                                     <th>Estado</th>
-                    
                                 </tr>
                             </thead>
                             <tbody>
                                 {generos?.map(genero=>
                                     <tr key={genero.id}>
-                                        <td>
-                                            {genero.nombre}
-                                        </td>
                                 
-                                        <td>{genero.estado===false?<b>Pendiente</b> :<b>Aprobado</b>}</td>  
+                                        <td>{(() => {
+                                    switch (genero.estado) {
+                                    case "":   return <Alert severity="info">
+                                                       <AlertTitle><strong>Pendiente</strong></AlertTitle>
+                                                            La rúbrica <strong>{genero.nombre}</strong>
+                                                        </Alert>;
+                                    case "Pendiente": return <Alert severity="info">
+                                                        <AlertTitle><strong>Pendiente</strong></AlertTitle>
+                                                            La rúbrica <strong>{genero.nombre}</strong>
+                                                        </Alert>;
+                                    case "Aprobado":  return <Alert severity="success"onClose={() => {}}>
+                                                             <AlertTitle><strong>Aprobada</strong></AlertTitle>
+                                                            La rúbrica <strong>{genero.nombre}</strong></Alert>;
+                                    case "Rechazado":  return <Alert severity="error">
+                                                                <AlertTitle><strong>Rechazada</strong></AlertTitle>
+                                                            La rúbrica <strong>{genero.nombre}</strong></Alert>;
+                                    default:      return <Alert severity="info">
+                                                        <AlertTitle><strong>Pendiente</strong></AlertTitle>
+                                                            La rúbrica <strong>{genero.nombre}</strong>
+                                                        </Alert>;
+                                    }
+                                })()}</td>
                         
                                     </tr>)}
                             </tbody>
                         </table>
+
+
                     </CardContent>
+                    <Paginacion cantidadTotalDePaginas={totalDePaginas}
+            paginaActual={pagina} onChange={nuevaPagina=> setPagina(nuevaPagina)}/>
                     </Card>
              </Grid> 
             </ListadoGenerico>

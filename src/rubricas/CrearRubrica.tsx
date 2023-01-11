@@ -41,7 +41,7 @@ export default function CrearRubrica() {
                     ejemplar: "",
                 }],
             fechaCreacion: new Date(),
-            estado: false,
+            estado: "",
  
 
             }} 

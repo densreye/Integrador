@@ -1,3 +1,4 @@
+import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Button from "utils/Button";
@@ -31,10 +32,12 @@ export default function IndiceUsuarios() {
     }
 
     return (
+     
+ 
         <IndiceEntidad<usuarioDTO>
             url={`${urlCuentas}/listadoUsuarios`}
             titulo="Usuarios"
-        >
+        > 
             {usuarios => <>
                 <Card sx={{ marginTop:10 }}>
                 <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
@@ -68,6 +71,7 @@ export default function IndiceUsuarios() {
                 </CardContent>
                 </Card>
             </>}
+        
         </IndiceEntidad>
-    )
+       )
 }

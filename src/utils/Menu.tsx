@@ -16,7 +16,7 @@ export default function Menu() {
     return (
         <>
         
-        <nav className="navbar navbar-expand-lg navbar-light bg-light, p-3 mb-2  text-white " style={{ backgroundColor: '#1e19ff'}}>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light, p-2 mb-2  text-white " style={{ backgroundColor: '#1e19ff'}}>
             <div className="container-fluid">
                 
                 <NavLink className="navbar-brand text-white" 
