@@ -18,6 +18,8 @@ namespace RubricasAPI
 
         }
         public DbSet<Rubrica> Rubricas{get;set;}
-
+        public DbSet<Criterios> Criterios { get; set; }//creacion de la base con la solicitud con el tipo de clase
+        public DbSet<Rutas> Rutasdemedicion { get; set; }
+        
     }
 }

@@ -15,7 +15,15 @@ namespace RubricasAPI.Utilidades
         {
             CreateMap<Rubrica, RubricaDTO>().ReverseMap();
             CreateMap<RubricaCreacionDTO,Rubrica>();
+
             CreateMap<IdentityUser, UsuarioDTO>();
+
+
+            CreateMap<Criterios,CriteriosDTO>().ReverseMap();
+            CreateMap<CriteriosCreacionDTO, Criterios>();
+
+            CreateMap<Rutas, RutaDTO>().ReverseMap();
+            CreateMap<RutaCreacionDTO, Rutas>();
         }
     }
 }

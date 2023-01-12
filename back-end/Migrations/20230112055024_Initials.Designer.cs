@@ -12,8 +12,8 @@ using RubricasAPI;
 namespace RubricasAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230111085504_Initial")]
-    partial class Initial
+    [Migration("20230112055024_Initials")]
+    partial class Initials
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -223,6 +223,34 @@ namespace RubricasAPI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("RubricasAPI.Entidades.Criterios", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Criterio")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Desarrollo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ejemplar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Insatisfactorio")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Satisfactorio")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Criterios");
+                });
+
             modelBuilder.Entity("RubricasAPI.Entidades.Rubrica", b =>
                 {
                     b.Property<int>("Id")
@@ -251,6 +279,52 @@ namespace RubricasAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Rubricas");
+                });
+
+            modelBuilder.Entity("RubricasAPI.Entidades.Rutas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CodigoMateria")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescripcionEspanol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescripcionIngles")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdCarrera")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdCurso")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdMateria")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Materia")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Medicion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Paralelo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Rutasdemedicion");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
