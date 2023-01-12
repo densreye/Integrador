@@ -37,7 +37,7 @@ export default function Menu() {
                                 <>
                                     <li className="nav-item">
                                     <NavLink className="nav-link text-white" activeClassName={claseActiva} 
-                                    to="/rutasmedicion">
+                                    to="/rutasdemedicion">
                                         Rutas de Medición
                                     </NavLink>
                                     </li>

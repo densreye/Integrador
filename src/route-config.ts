@@ -11,7 +11,9 @@ import IndiceNotificaciones from "notificacion/IndiceNotificaciones";
 import LandingPage from "LandingPage";
 import IndiceUsuarios from "Auth/IndiceUsuarios";
 import IndiceAprobacion from "Aprobacion/aprobacion";
-import RutaMedicion from "RutasMedicion/rutamed";
+import RutaMedicion from "RutasMedicion/IndiceRutaMed";
+import CrearRuta from "RutasMedicion/CrearRuta";
+import EditarRuta from "RutasMedicion/EditarRuta";
 
 const rutas = [
     {path: '/rubricas/crear', componente: CrearRubrica, exact: true,esAdmin:true},
@@ -22,7 +24,11 @@ const rutas = [
     {path: '/login', componente: Login  },
     {path: '/usuarios', componente: IndiceUsuarios, esAdmin: true},
     {path: '/aprobaciones', componente: IndiceAprobacion, exact: true,esAdmin:true},
-    {path: '/rutasmedicion', componente: RutaMedicion, exact: true,esAdmin:true},
+    {path: '/rutasdemedicion/crear', componente: CrearRuta, exact: true,esAdmin:true},
+    {path: '/rutasdemedicion/editar/:id(\\d+)', componente: EditarRuta, exact: true,esAdmin:true},
+    {path: '/rutasdemedicion', componente: RutaMedicion, exact: true,esAdmin:true},
+
+    
     {path: '/', componente: LandingPage, exact: true},
     {path: '*', componente: RedireccionarALanding},
     

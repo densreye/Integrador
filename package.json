@@ -7,7 +7,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@material-ui/core": "^4.12.4",
-    "@mui/material": "^5.11.3",
+    "@mui/material": "^5.11.4",
     "@opuscapita/react-icons": "^4.0.14",
     "@react-leaflet/core": "1.0.2",
     "@testing-library/jest-dom": "^5.11.10",
