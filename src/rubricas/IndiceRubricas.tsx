@@ -87,7 +87,7 @@ return (
                     <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
                 <table className="table table-bordered">
                     <thead>
-                        <tr>
+                        <tr className="color">
                             <th>Nombre</th>
                             <th>Criterios</th>
                             <th>Clasificación</th>

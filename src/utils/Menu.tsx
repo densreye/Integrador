@@ -16,12 +16,10 @@ export default function Menu() {
     return (
         <>
         
-        <nav className="navbar navbar-expand-lg navbar-light bg-light, p-2 mb-2  text-white " style={{ backgroundColor: '#1e19ff'}}>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light, p-2 mb-2  text-white " style={{ backgroundColor: '#001c43'}}>
             <div className="container-fluid">
                 
-                <NavLink className="navbar-brand text-white" 
-                activeClassName={claseActiva} 
-                to="/">STAC</NavLink>
+          
                 <div className="collapse navbar-collapse"
                 style={{display:'flex',justifyContent:'space-between'}}
                 >
@@ -79,7 +77,7 @@ export default function Menu() {
                                    logout();
                                    actualizar([]);
                                }}
-                            className="nav-link btn btn-link text-white">Log out</Button>
+                            className="nav-link btn btn-link text-white">Salir</Button>
                             </>}
                             noAutorizado={<>
                                 <Link to="/Registro" className="nav-link btn btn-link text-white">

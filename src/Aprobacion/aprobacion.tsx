@@ -110,7 +110,7 @@ return (
             <ListadoGenerico listado={generos}>
                 <table className="table table-bordered">
                     <thead>
-                        <tr>
+                        <tr className="color">
                             <th>Nombre</th>
                             <th>Criterios</th>
                             <th>Clasificación</th>
@@ -138,10 +138,10 @@ return (
                                 })()}</td><td><Autorizado role="admin"
                                     autorizado={<>  
                               
-                                    <Button
+                                     <Button className='btn btn-primary'
                                     onClick={()=>confirmarEstado(()=> aprobarEstado(genero), 
                                         `¿Desea aprobar ${genero.nombre} ?`, 'Realizar')}
-                                        style={{ backgroundColor: '#212fff'}}   >Aprobar</Button>
+                                        style={{backgroundColor: '#001c43'}}   >Aprobar</Button>
                                     <Button
                                     onClick={()=>confirmarEstado(()=> rechazarEstado(genero), 
                                         `¿ Seguro desea rechazar la rúbrica: ${genero.nombre} ?`, 'Realizar')}

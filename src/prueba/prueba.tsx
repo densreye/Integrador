@@ -17,19 +17,18 @@ import { FormStepper } from "../prueba/FormStepper";
 export default function Pruebas(props: formularioPruebasProps){
 
   return (
-    <Container sx={{ bgcolor: "#87c1ff4d", paddingY: 3, marginTop: 5 }}>
-      <Typography variant="h3" align="center" component="h2">
+    <Container sx={{ bgcolor: "#001c43", paddingY: 3, marginTop: 5 }}>
+      <Typography variant="h2"  align="center" component="h2" style={{ backgroundColor: "001c43",color:"white" }}>
         Formulario Criterios
       </Typography>
       <Card sx={{ marginTop: 2 }}>
         <CardContent sx={{ paddingY: 10, paddingX: 5 }}>
+          
           <Formik
             initialValues={
               props.modelo
             }
             onSubmit={props.onSubmit}
-
-            
           >
             
             {({ values}) => (

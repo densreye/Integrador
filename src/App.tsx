@@ -8,13 +8,10 @@ import configurarValidaciones from './validaciones'
 import AutenticacionContext from 'Auth/AutenticacionContext';
 import { claim } from 'Auth/auth.model';
 import { obtenerClaims } from 'Auth/manejadorJWT';
-
-import { Container, Card, CardContent, Typography, Grid, Button } from "@mui/material";
- 
+import logo from 'Images/stac.png'
 
 configurarValidaciones();
  
-
 function App() {
   const [claims, setClaims] = useState<claim[]>([]);
 
@@ -36,6 +33,18 @@ function App() {
       <BrowserRouter>
 
         <AutenticacionContext.Provider value={{ claims, actualizar }}>
+        <header className="container">
+      <div className="row p-4">
+        <div className="col-md-12">
+            <a href="/" title="Inicio">
+              <img src={logo} alt="Inicio" className="img-responsive"/>
+            </a>            
+        </div>
+      </div> 
+         
+
+      </header>
+      <hr className="hr_header"></hr>
           <Menu />
           <div className="container">
             <Switch>

@@ -55,9 +55,10 @@ return (
                       
                         <table className="table">
                             <thead>
-                                <tr>
+                                <tr className="color">
                                     <th>Estado</th>
                                 </tr>
+                                <hr className="hr_header"></hr>
                             </thead>
                             <tbody>
                                 {generos?.map(genero=>

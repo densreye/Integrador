@@ -43,7 +43,7 @@ export default function IndiceUsuarios() {
                 <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
                 <table className="table table-bordered">
                 <thead>
-                    <tr>
+                    <tr className="color">
                         <th>Correo</th>
                         <th>Acciones</th>
                     </tr>

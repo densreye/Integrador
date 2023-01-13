@@ -1,4 +1,4 @@
-import { urlRubricas } from "utils/endpoints";
+import { urlRutas } from "utils/endpoints";
 //import FormularioRubricas from "./FormularioRubrica";
 import FormularioRutas from "./FormularioRutaMed";
 import axios from 'axios';
@@ -15,8 +15,8 @@ export default function CrearRuta() {
     
     async function crear(rubrica: rutaCreacionDTO) {
         try{
-           await axios.post(urlRubricas,rubrica) 
-           history.push('/rutasmedicion')
+           await axios.post(urlRutas,rubrica) 
+           history.push('/rutasdemedicion')
         }
         catch(error){
             console.error(error)

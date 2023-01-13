@@ -94,7 +94,7 @@ return (
             
                 <table className="table table-bordered">
                     <thead>
-                        <tr>
+                        <tr className="color">
                             <th>Id Carrera</th>
                             <th>Id Curso</th>
                             <th>Código Materia</th>

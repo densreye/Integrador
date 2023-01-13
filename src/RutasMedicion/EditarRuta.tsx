@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Cargando from "utils/Cargando";
-import { urlRubricas } from "utils/endpoints";
+import { urlRutas } from "utils/endpoints";
 
 
 import { rutaCreacionDTO } from "./rutasmed.model";
@@ -17,7 +17,7 @@ export default function EditarRuta() {
 
     
     useEffect(()=>{
-        axios.get(``)
+        axios.get(`${urlRutas}/${id}`)
         .then((respuesta:AxiosResponse<rutaCreacionDTO>)=>{
             setRuta(respuesta.data)
         })
@@ -27,8 +27,8 @@ export default function EditarRuta() {
     async function editar(rutaEditar:rutaCreacionDTO) {
         
         try{
-            await axios.put(``,rutaEditar);
-            history.push('/rutasmedicion')
+            await axios.put(`${urlRutas}/${id}`,rutaEditar);
+            history.push('/rutasdemedicion')
         }
         catch(error){
             //setErrores(error.response.data)
