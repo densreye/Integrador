@@ -66,7 +66,7 @@ namespace RubricasAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] RutaCreacionDTO rutaCreacionDTO)
         {
-            var ruta = mapper.Map<Criterios>(rutaCreacionDTO);
+            var ruta = mapper.Map<Rutas>(rutaCreacionDTO);
             context.Add(ruta);
             await context.SaveChangesAsync();
             return NoContent();
@@ -75,7 +75,7 @@ namespace RubricasAPI.Controllers
         [HttpPut("{id:int}")]
         public async Task<ActionResult> Put(int id, [FromBody] RutaCreacionDTO rutaCreacionDTO)
         {
-            var ruta = await context.Criterios.FirstOrDefaultAsync(x => x.Id == id);
+            var ruta = await context.Rutasdemedicion.FirstOrDefaultAsync(x => x.Id == id);
 
             if (ruta == null)
             {
