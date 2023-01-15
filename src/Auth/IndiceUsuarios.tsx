@@ -57,7 +57,7 @@ export default function IndiceUsuarios() {
                             <Button
                                 onClick={() => confirmar(() => hacerAdmin(usuario.id),
                                     `¿Desea hacer a ${usuario.email} admin?`, 'Realizar')}
-                                    style={{ backgroundColor: '#212fff'}}    >
+                                    style={{ backgroundColor: '#001c43'}}    >
                                 Hacer Admin</Button>
                             <Button className="btn btn-danger" style={{ marginLeft: '2rem' }}
                                 onClick={() => confirmar(() => removerAdmin(usuario.id),

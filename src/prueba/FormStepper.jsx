@@ -28,8 +28,8 @@ export const FormStepper = ({ children }) => {
           {step === 0 ? "Siguiente" : "Atras"}
         </Button>
         {step === 1 && (
-          <Button variant="contained" type="submit">
-            Guardar1
+          <Button variant="contained" type="submit" style={{ backgroundColor: '#001c43'}} >
+            Guardar
           </Button>
         )}
       </Stack>

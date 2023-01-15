@@ -47,7 +47,7 @@ export default function FormularioAuth(props: formularioAuthProps){
                             <FormGroupText label="Email" campo="email" />
                             <FormGroupText label="Password" campo="password" type="password" />
                             <div className="mb-2">
-                                <Button disabled={formikProps.isSubmitting} type="submit">Iniciar Sesión</Button>
+                                <Button disabled={formikProps.isSubmitting} type="submit" style={{ backgroundColor: '#001c43'}} >Iniciar Sesión</Button>
                                 <Link className="btn btn-secondary" to="/">Cancelar</Link>
                             </div>
                         </CardContent>

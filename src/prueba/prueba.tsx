@@ -81,7 +81,7 @@ export default function Pruebas(props: formularioPruebasProps){
                         </>
                       ))}{" "}
                       <Grid item xs={12}>
-                        <Button onClick={() => push(props.modelo.criteriOBJ.push) } >
+                        <Button onClick={() => push(props.modelo.criteriOBJ.push) } style={{ backgroundColor: '#001c43'}} >
                           Añadir Criterio
                         </Button>
  

@@ -15,6 +15,8 @@ import Swal from "sweetalert2";
 import { Card, CardContent,} from "@mui/material";
 import { rutaCreacionDTO } from "./rutasmed.model";
 import { rutaDTO } from "./rutasmed.model";
+import jsPDF from "jspdf";
+import PDFPrint from "./DescPdf";
 
 export default function RutaMedicion() {
     const [generos,setGeneros]= useState<rutaDTO []>();
@@ -50,7 +52,10 @@ export default function RutaMedicion() {
         }
     }
 
-   
+    
+
+ 
+    
 
 return (
         <>
@@ -63,7 +68,7 @@ return (
 
             <br></br>
             
-            <Link className="btn btn-primary" style={{ backgroundColor: '#212fff'}} to="rutasdemedicion/crear" >Crear Ruta de Medición</Link>
+            <Link className="btn btn-primary" style={{ backgroundColor: '#001c43'}} to="rutasdemedicion/crear" >Crear Ruta de Medición</Link>
             <br></br>
             <br></br>
             
@@ -76,6 +81,7 @@ return (
             
             <div className="form-group" style={{width:'150px'}}>
                 <label> Registros por página: </label>
+                
                 <select 
                     defaultValue={10}
                     className="form-control" 
@@ -87,11 +93,15 @@ return (
                     <option value={25}>25</option>
                     <option value={50}>50</option>
                 </select>
+                
             </div>
+
             <Card sx={{ marginTop:10 }}>
+            <PDFPrint></PDFPrint>
             <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
+              
             
-            
+          
                 <table className="table table-bordered">
                     <thead>
                         <tr className="color">
@@ -101,6 +111,7 @@ return (
                             <th>Medición</th>
                             <th>Materia</th>
                             <th>Estado</th>
+                            <th>Acciones</th>
                             
                             
                         </tr>
@@ -129,7 +140,7 @@ return (
                                     <td>{(() => {
                                         switch (genero.estado) {
                                         case "":   return  <><Link className='btn btn-primary'
-                                        style={{ backgroundColor: '#212fff'}} 
+                                        style={{ backgroundColor: '#001c43'}}
                                         to={`/rutasdemedicion/editar/${genero.id}`}>
                                             Editar
                                         </Link>
@@ -137,7 +148,7 @@ return (
                                         onClick={()=>confirmar(()=>borrar(genero.id))}
                                         className="btn btn-danger">Borrar</Button></>;
                                         case "Pendiente": return <><Link className='btn btn-primary'
-                                                            style={{ backgroundColor: '#212fff'}} 
+                                                            style={{ backgroundColor: '#001c43'}} 
                                                             to={`/rutasdemedicion/editar/${genero.id}`}>
                                                                 Editar
                                                             </Link>
@@ -166,7 +177,7 @@ return (
                                         
           
             <Paginacion cantidadTotalDePaginas={totalDePaginas}
-            paginaActual={pagina} onChange={nuevaPagina=> setPagina(nuevaPagina)}/>
+            paginaActual={pagina} onChange={nuevaPagina=> setPagina(nuevaPagina)} />
             </CardContent>
             </Card>
             

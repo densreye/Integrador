@@ -32,7 +32,7 @@ export default function FormularioRutas(props: formularioRutasProps){
 
 
 
-                    <Button disabled={formikProps.isSubmitting} 
+                    <Button disabled={formikProps.isSubmitting} style={{ backgroundColor: '#001c43'}} 
                         type="submit">Enviar</Button>
                     <Link className="btn btn-secondary" to="/rutasdemedicion">Cancelar</Link>
                 </Form>

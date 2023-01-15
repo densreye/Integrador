@@ -10,6 +10,7 @@ import confirmar from "utils/Confirmar";
 import Autorizado from "Auth/Autorizado";
 
 import { Card, CardContent,Grid} from "@mui/material";
+import PDFPrintRubrica from "./DescPdfRubrica";
 
 export default function IndiceRubricas() {
     const [generos,setGeneros]= useState<rubricaDTO[]>();
@@ -53,7 +54,7 @@ return (
             <>
             <br></br>
             
-            <Link className="btn btn-primary" style={{ backgroundColor: '#212fff'}} to="rubricas/crear" >Crear Rúbrica</Link>
+            <Link className="btn btn-primary" style={{ backgroundColor: '#001c43'}} to="rubricas/crear" >Crear Rúbrica</Link>
             <br></br>
             <br></br>
             
@@ -84,6 +85,7 @@ return (
             <ListadoGenerico listado={generos}>
             <Grid className="display: 'flex',flexDirection: 'column', alignItems: 'center', direction: 'column', justify: 'space-between'">
                     <Card sx={{ marginTop:10 }}>
+                    <PDFPrintRubrica></PDFPrintRubrica>    
                     <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
                 <table className="table table-bordered">
                     <thead>
@@ -119,7 +121,7 @@ return (
                                     <td>{(() => {
                                         switch (genero.estado) {
                                         case "":   return  <><Link className='btn btn-primary'
-                                        style={{ backgroundColor: '#212fff'}} 
+                                        style={{ backgroundColor: '#001c43'}} 
                                         to={`/rubricas/editar/${genero.id}`}>
                                             Editar
                                         </Link>
