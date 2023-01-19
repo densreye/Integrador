@@ -6,7 +6,7 @@ import FormGroupText from '../utils/FormGroupText'
 import Button from '../utils/Button'
 //import { generoCreacionDTO } from "./generos.model";
 import { rutaCreacionDTO } from "./rutasmed.model";
-
+import { Grid } from "@mui/material";
 export default function FormularioRutas(props: formularioRutasProps){
     return(
         <Formik initialValues={props.modelo}
@@ -19,17 +19,41 @@ export default function FormularioRutas(props: formularioRutasProps){
 
         >
             {(formikProps) => (
-                <Form className="form-group">
-                    <FormGroupText campo="idCarrera" label="Id Carrera:" />
-                    <FormGroupText campo="idCurso" label="Id Curso:" />
-                    <FormGroupText campo="idMateria" label="Id Materia:" />
-                    <FormGroupText campo="descripcionEspanol" label="Descripción en Español:" />
-                    <FormGroupText campo="descripcionIngles" label="Descripción en Ingles:" />
-                    <FormGroupText campo="codigoMateria" label="Código Materia:" />
-                    <FormGroupText campo="medicion" label="Medición:" />
-                    <FormGroupText campo="materia" label="Materia:" />
-                    <FormGroupText campo="paralelo" label="Paralelo:" />
-
+                <Form >
+                    <Grid container spacing={2}>
+                        <Grid item md={3}>   
+                        <FormGroupText campo="idCarrera" label="Id Carrera:" /> 
+                        </Grid> 
+                        <Grid item md={3}>
+                        <FormGroupText campo="idCurso" label="Id Curso:" />
+                        </Grid>
+                        <Grid item md={3}>                   
+                        <FormGroupText campo="idMateria" label="Id Materia:" />
+                        </Grid> 
+                    </Grid>
+                    <br></br>
+                    <Grid container spacing={2}>
+                        <Grid item md={6}>
+                        <FormGroupText campo="descripcionEspanol" label="Descripción en Español:" />
+                        </Grid>
+                        <Grid item md={6}>
+                        <FormGroupText campo="descripcionIngles" label="Descripción en Ingles:" />
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={2}>
+                        <Grid item md={3}>
+                        <FormGroupText campo="codigoMateria" label="Código Materia:" />
+                        </Grid>
+                        <Grid item md={3}>
+                        <FormGroupText campo="medicion" label="Medición:" />
+                        </Grid>
+                        <Grid item md={3}>
+                        <FormGroupText campo="materia" label="Materia:" />
+                        </Grid>
+                        <Grid item md={3}>
+                        <FormGroupText campo="paralelo" label="Paralelo:" />
+                        </Grid>
+                    </Grid>
 
 
                     <Button disabled={formikProps.isSubmitting} style={{ backgroundColor: '#001c43'}} 
