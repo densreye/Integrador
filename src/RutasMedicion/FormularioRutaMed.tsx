@@ -6,7 +6,7 @@ import FormGroupText from '../utils/FormGroupText'
 import Button from '../utils/Button'
 //import { generoCreacionDTO } from "./generos.model";
 import { rutaCreacionDTO } from "./rutasmed.model";
-import { Grid } from "@mui/material";
+import { Grid} from "@mui/material";
 export default function FormularioRutas(props: formularioRutasProps){
     return(
         <Formik initialValues={props.modelo}
@@ -31,27 +31,30 @@ export default function FormularioRutas(props: formularioRutasProps){
                         <FormGroupText campo="idMateria" label="Id Materia:" />
                         </Grid> 
                     </Grid>
+                    <Grid container spacing={2}>
+                        <Grid item md={3}>   
+                        <FormGroupText campo="medicion" label="Nivel:" placeholder="Inicial - Medio - Final" /> 
+                        </Grid> 
+                        <Grid item md={3}>   
+                        <FormGroupText campo="paralelo" label="Paralelo:" placeholder="Ingresar Paralelo" /> 
+                        </Grid>
+                    </Grid>
                     <br></br>
                     <Grid container spacing={2}>
                         <Grid item md={6}>
-                        <FormGroupText campo="descripcionEspanol" label="Descripción en Español:" />
+                        <FormGroupText campo="descripcionEspanol" label="Nombre de la Rúbrica (Español) :" />
                         </Grid>
                         <Grid item md={6}>
-                        <FormGroupText campo="descripcionIngles" label="Descripción en Ingles:" />
+                        <FormGroupText campo="descripcionIngles" label="Nombre de la Rúbrica (Ingles)" />
                         </Grid>
                     </Grid>
                     <Grid container spacing={2}>
                         <Grid item md={3}>
                         <FormGroupText campo="codigoMateria" label="Código Materia:" />
                         </Grid>
-                        <Grid item md={3}>
-                        <FormGroupText campo="medicion" label="Medición:" />
-                        </Grid>
+                        
                         <Grid item md={3}>
                         <FormGroupText campo="materia" label="Materia:" />
-                        </Grid>
-                        <Grid item md={3}>
-                        <FormGroupText campo="paralelo" label="Paralelo:" />
                         </Grid>
                     </Grid>
 

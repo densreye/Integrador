@@ -14,6 +14,7 @@ import IndiceAprobacion from "Aprobacion/aprobacion";
 import RutaMedicion from "RutasMedicion/IndiceRutaMed";
 import CrearRuta from "RutasMedicion/CrearRuta";
 import EditarRuta from "RutasMedicion/EditarRuta";
+import IndiceAprobacionRutas from "AprobacionRutas/aprobacionrutas";
 
 const rutas = [
     {path: '/rubricas/crear', componente: CrearRubrica, exact: true,esAdmin:true},
@@ -26,6 +27,7 @@ const rutas = [
     {path: '/aprobaciones', componente: IndiceAprobacion, exact: true,esAdmin:true},
     {path: '/rutasdemedicion/crear', componente: CrearRuta, exact: true,esAdmin:true},
     {path: '/rutasdemedicion/editar/:id(\\d+)', componente: EditarRuta, exact: true,esAdmin:true},
+    {path: '/aprobacionesrutas', componente: IndiceAprobacionRutas, exact: true,esAdmin:true},
     {path: '/rutasdemedicion', componente: RutaMedicion, exact: true,esAdmin:true},
 
     

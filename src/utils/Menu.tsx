@@ -35,8 +35,20 @@ export default function Menu() {
                                 <>
                                     <li className="nav-item">
                                     <NavLink className="nav-link text-white" activeClassName={claseActiva} 
+                                    to="/aprobaciones">
+                                        Aprobación Rúbricas
+                                    </NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                    <NavLink className="nav-link text-white" activeClassName={claseActiva} 
                                     to="/rutasdemedicion">
                                         Rutas de Medición
+                                    </NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                    <NavLink className="nav-link text-white" activeClassName={claseActiva} 
+                                    to="/aprobacionesrutas">
+                                        Aprobación Rutas de Medición
                                     </NavLink>
                                     </li>
                                     <li className="nav-item">
@@ -46,12 +58,7 @@ export default function Menu() {
                                     </NavLink>
                                     
                                     </li>
-                                    <li className="nav-item">
-                                    <NavLink className="nav-link text-white" activeClassName={claseActiva} 
-                                    to="/aprobaciones">
-                                        Aprobación
-                                    </NavLink>
-                                    </li>
+                                    
                                     <li className="nav-item">
                                     <NavLink className="nav-link text-white" activeClassName={claseActiva} 
                                     to="/usuarios">
