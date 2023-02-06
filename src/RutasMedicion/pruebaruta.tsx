@@ -8,7 +8,7 @@ import { rutaCreacionDTO  } from "./rutasmed.model";
 import { Formik, Field, FieldArray, FormikHelpers,FormikConfig,FormikValues } from "formik";
 import { Container, Card, CardContent, Typography, Grid } from "@mui/material";
 import { TextField } from "formik-material-ui";
-import { FormStepper} from "../prueba/FormStepper";
+import { FormStepper} from "../RutasMedicion/FormStepper";
 
 
  
@@ -47,39 +47,39 @@ export default function PruebasRutas(props: formularioPruebasRutasProps){
                         <Typography variant="h6" component="h2">
                           Niveles
                         </Typography>
-                        <b>Total Criterios: {values.niveles.length.toString()}</b>
+  
                       </Grid>
                       {values.niveles.map((_, index) => (
-                        <>
+                        <div className="row col-12" key={index}>
                         
-                        <Grid item md={1.5}>
+                            <Grid item md={1.5} className="d-flex p-2">
                               <Field fullWidth name={`niveles.${index}.nivel`} component={TextField} placeholder="Nivel" />
                             </Grid>
-                            <Grid item md={1.5}>
+                            <Grid item md={1.5} className="d-flex p-2">
                               <Field fullWidth name={`niveles.${index}.materia`} component={TextField} placeholder="Materia" />
                             </Grid>
-                            <Grid item md={1.5}>
+                            <Grid item md={1.5} className="d-flex p-2">
                               <Field fullWidth name={`niveles.${index}.paralelo`} component={TextField} placeholder="Paralelo" />
                             </Grid>
-                            <Grid item md={1.5}>
+                            <Grid item md={1.5} className="d-flex p-2">
                               <Field fullWidth name={`niveles.${index}.docente`} component={TextField} placeholder="Docente" />
                             </Grid>
-                            <Grid item md={1.5}>
+                            <Grid item md={1.5} className="d-flex p-2">
                               <Field fullWidth name={`niveles.${index}.idMateria`} component={TextField} placeholder="IDMATERIA" />
                             </Grid>
-                            <Grid item md={1.5}>
+                            <Grid item md={1.5} className="d-flex p-2">
                               <Field fullWidth name={`niveles.${index}.codMateria`} component={TextField} placeholder="codMateria" />
                             </Grid>
-                            <Grid item md={1.5}>
+                            <Grid item md={1.5} className="d-flex p-2">
                               <Field fullWidth name={`niveles.${index}.idCurso`} component={TextField} placeholder="idCurso" />
                             </Grid>
-                            <Grid item md={1.5}>
+                            <Grid item md={1.5} className="d-flex p-2">
                               <Button  onClick={() => remove(index)} className="btn btn-danger">
                                 Borrar
                               </Button>
                             </Grid>
                      
-                        </>
+                        </div>
                       ))}{" "}
                       {values.niveles.length < 3 && (
                       <Grid item xs={12}>

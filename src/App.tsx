@@ -46,7 +46,7 @@ function App() {
       </header>
       <hr className="hr_header"></hr>
           <Menu />
-          <div className="container col-lg-8">
+         
             <Switch>
               {rutas.map(ruta =>
                 <Route key={ruta.path} path={ruta.path}
@@ -57,7 +57,7 @@ function App() {
                     <Footer></Footer>
                 </Route>)}
             </Switch>
-         </div>
+      
           
         </AutenticacionContext.Provider>
         

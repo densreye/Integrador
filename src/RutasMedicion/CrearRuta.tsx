@@ -23,7 +23,7 @@ export default function CrearRutaPrueba() {
         }
     }
     return (
-        <>
+        <div className="container col-lg-9">
             <h3>Crear Ruta de Medición</h3>
             <MostrarErrores/>
     
@@ -61,6 +61,6 @@ export default function CrearRutaPrueba() {
                     console.log("VALORES ACTUALES",valores)
                  }}
             />
-        </>
+        </div>
     )
 }

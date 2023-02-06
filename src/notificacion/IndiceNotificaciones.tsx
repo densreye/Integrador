@@ -54,7 +54,7 @@ export default function IndiceNotificaciones() {
     
 
 return (
-        <>
+        <div className="container col-lg-9">
         
             <h3>Notificaciones</h3>
 
@@ -164,7 +164,7 @@ return (
 
             
  
-        </>
+        </div>
 
     )
 }

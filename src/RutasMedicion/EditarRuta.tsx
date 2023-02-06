@@ -39,7 +39,7 @@ export default function EditarRuta() {
 
 
     return (
-        <>
+        <div className="container col-lg-9">
             <h3>Editar Rúbrica</h3>
             {ruta?<FormularioRutas modelo={ruta} 
                 onSubmit={async valores=>{
@@ -47,7 +47,7 @@ export default function EditarRuta() {
 
                 }}
             />:<Cargando/>}
-        </>
+        </div>
 
     )
 }

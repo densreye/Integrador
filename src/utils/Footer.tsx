@@ -4,7 +4,7 @@ export default function Footer() {
  
     return (
         <>
-    <div className=" " style={{ backgroundColor: '#001c43'}}>
+    <div className="container col-lg-8" style={{ backgroundColor: '#001c43'}}>
         
         <hr></hr>
  
@@ -17,7 +17,7 @@ export default function Footer() {
         </ul>
  
   </div>
-  <div className="col-md-12 col-sm-12 p-3" style={{ backgroundColor: '#f2fbff'}} >
+  <div className=" container col-lg-8 col-md-12 col-sm-12 p-3" style={{ backgroundColor: '#f2fbff'}} >
         <p className="text-center">
         <b>Escuela Superior Politécnica del Litoral - Guayaquil - Ecuador Campus Gustavo Galindo</b><br/><br/>
             <b>©</b>El contenido de esta obra es de propiedad intelectual de la ESPOL, todos los derechos reservados, prohibida su reproducción total o parcial, comunicación pública o distribución sin autorización previa del titular de los derechos.

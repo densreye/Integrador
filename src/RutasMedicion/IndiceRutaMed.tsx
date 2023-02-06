@@ -53,7 +53,7 @@ export default function RutaMedicion() {
    
 
 return (
-        <>
+        <div className="container col-lg-9">
             <h3>Rutas de Medición</h3>
 
             
@@ -170,7 +170,7 @@ return (
             </CardContent>
             </Card>
             
-        </>
+        </div>
             
     )
 }

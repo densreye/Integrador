@@ -44,7 +44,7 @@ export default function IndiceRubricas() {
     }
 
 return (
-        <>
+        <div className="container col-lg-8">
             
             <h3>Rúbricas</h3>
 
@@ -165,7 +165,7 @@ return (
 
   
         
-        </>
+        </div>
 
     )
 }

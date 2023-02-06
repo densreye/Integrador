@@ -24,7 +24,7 @@ export default function CrearRubrica() {
     }
     return (
         <>
-            <h3>Crear Rúbrica</h3>
+            <h3 className="container col-lg-9">Crear Rúbrica</h3>
             <MostrarErrores/>
     
             <FormularioRubricas   

@@ -39,7 +39,7 @@ export default function EditarGenero() {
 
     return (
         <>
-            <h3>Editar Rúbrica</h3>
+            <h3 className="container col-lg-9" >Editar Rúbrica</h3>
             {rubrica?<FormularioRubricas modelo={rubrica} 
                 onSubmit={async valores=>{
                     await editar(valores)

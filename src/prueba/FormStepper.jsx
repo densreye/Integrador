@@ -6,14 +6,18 @@ export const FormStepper = ({ children }) => {
   const stepsArray = React.Children.toArray(children);
   const [step, setStep] = useState(0);
   const currentStep = stepsArray[step];
-
+  const steps = [
+    'Selección principal',
+    'Selección de criterios',
+ 
+  ];
   return (
     
     <Form>
       <Stepper alternativeLabel activeStep={step} sx={{ marginBottom: 5 }}>
         {stepsArray.map((child, index) => (
-          <Step key={child.props.label} completed={step > index}>
-            <StepLabel>{child.props.label}</StepLabel>
+          <Step key={index} completed={step > index}>
+            <StepLabel>{steps[index]}</StepLabel>
           </Step>
         ))}
       </Stepper>

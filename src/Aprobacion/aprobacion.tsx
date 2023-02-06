@@ -77,7 +77,7 @@ export default function IndiceAprobacion() {
     }
 
 return (
-        <>
+        <div className="container col-lg-9">
             <h3>Rúbricas para aprobar</h3>
 
             
@@ -121,7 +121,7 @@ return (
                     </thead>
                     <tbody>
                         {generos?.map(genero=>
-                            <tr key={genero.id}><td>
+                            <tr key={genero.id} className="color"><td>
                                     {genero.nombre}
                                 </td>
                                 <td>CRITERIOS</td>
@@ -159,7 +159,7 @@ return (
             paginaActual={pagina} onChange={nuevaPagina=> setPagina(nuevaPagina)}/>
             </CardContent>
             </Card>
-        </>
+        </div>
 
     )
 }

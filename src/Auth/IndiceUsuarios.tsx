@@ -33,7 +33,7 @@ export default function IndiceUsuarios() {
 
     return (
      
- 
+ < div className="container col-lg-9">
         <IndiceEntidad<usuarioDTO>
             url={`${urlCuentas}/listadoUsuarios`}
             titulo="Usuarios"
@@ -73,5 +73,5 @@ export default function IndiceUsuarios() {
             </>}
         
         </IndiceEntidad>
-       )
+        </div> )
 }
