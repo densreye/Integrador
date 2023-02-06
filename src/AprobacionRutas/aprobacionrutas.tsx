@@ -53,7 +53,7 @@ export default function IndiceAprobacionRutas() {
         rutaEditar.estado="Aprobado";
         try{
             await axios.put(`${urlRutas}/${rutaEditar.id}`,rutaEditar);
-            history.push('/rubricas')
+            history.push('/rutasdemedicion')
         }
         catch(error){
             //setErrores(error.response.data)
@@ -67,7 +67,7 @@ export default function IndiceAprobacionRutas() {
         rutaEditar.estado="Rechazado";
         try{
             await axios.put(`${urlRutas}/${rutaEditar.id}`,rutaEditar);
-            history.push('/rubricas')
+            history.push('/rutasdemedicion')
         }
         catch(error){
             //setErrores(error.response.data)
@@ -111,11 +111,16 @@ return (
                 <table className="table table-bordered">
                     <thead>
                         <tr className="color">
-                            <th>Id Carrera</th>
-                            <th>Id Curso</th>
-                            <th>Código Materia</th>
-                            <th>Medición</th>
-                            <th>Materia</th>
+                            <th>Carrera</th>
+                            <th>Nivel 1</th>
+                            <th>Materia </th>
+                            <th>Paralelo</th>
+                            <th>Nivel 2</th>
+                            <th>Materia </th>
+                            <th>Paralelo</th>
+                            <th>Nivel 3</th>
+                            <th>Materia </th>
+                            <th>Paralelo</th>
                             <th>Estado</th>
                             
                             <Autorizado role="admin" autorizado={ <th>Acción</th>}/>
@@ -123,13 +128,17 @@ return (
                     </thead>
                     <tbody>
                         {rutas?.map(ruta=>
-                            <tr key={ruta.id}><td>
-                            {ruta.carrera}
-                        </td>
-                        <td>CRITERIOS</td>
+                            <tr key={ruta.id}>
+                        <td>{ruta.carrera}</td>
+                        <td>{ruta.niveles[0].nivel}</td>
+                        <td>{ruta.niveles[0].materia}</td>
+                        <td>{ruta.niveles[0].paralelo}</td>
+                        <td>{ruta.niveles[1].nivel}</td>
                         <td>{ruta.niveles[1].materia}</td>
-                        <td>{ruta.niveles[1].materia}</td>
-                        <td>{ruta.niveles[1].materia}</td>
+                        <td>{ruta.niveles[1].paralelo}</td>
+                        <td>{ruta.niveles[2].nivel}</td>
+                        <td>{ruta.niveles[2].materia}</td>
+                        <td>{ruta.niveles[2].paralelo}</td>
                                 <td>{(() => {
                                     switch (ruta.estado) {
                                     case "":   return <b>Pendiente</b>;
