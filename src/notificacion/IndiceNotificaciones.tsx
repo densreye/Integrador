@@ -120,27 +120,27 @@ return (
                             </thead>
                             <tbody>
                                 {rutas?.map(ruta=>
-                                    <tr key={ruta.descripcionEspanol}>
+                                    <tr key={ruta.nombrerub_espanol}>
                                 
                                         <td>{(() => {
                                     switch (ruta.estado) {
                                     case "":   return <Alert severity="info">
                                                        <AlertTitle><strong>Pendiente</strong></AlertTitle>
-                                                            La ruta <strong>{ruta.descripcionEspanol}</strong>
+                                                            La ruta <strong>{ruta.nombrerub_espanol}</strong>
                                                         </Alert>;
                                     case "Pendiente": return <Alert severity="info">
                                                         <AlertTitle><strong>Pendiente</strong></AlertTitle>
-                                                            La ruta <strong>{ruta.descripcionEspanol}</strong>
+                                                            La ruta <strong>{ruta.nombrerub_espanol}</strong>
                                                         </Alert>;
                                     case "Aprobado":  return <Alert severity="success"onClose={() => {}}>
                                                              <AlertTitle><strong>Aprobada</strong></AlertTitle>
-                                                            La ruta <strong>{ruta.descripcionEspanol}</strong></Alert>;
+                                                            La ruta <strong>{ruta.nombrerub_espanol}</strong></Alert>;
                                     case "Rechazado":  return <Alert severity="error">
                                                                 <AlertTitle><strong>Rechazada</strong></AlertTitle>
-                                                            La ruta <strong>{ruta.descripcionEspanol}</strong></Alert>;
+                                                            La ruta <strong>{ruta.nombrerub_espanol}</strong></Alert>;
                                     default:      return <Alert severity="info">
                                                         <AlertTitle><strong>Pendiente</strong></AlertTitle>
-                                                            La ruta <strong>{ruta.descripcionEspanol}</strong>
+                                                            La ruta <strong>{ruta.nombrerub_espanol}</strong>
                                                         </Alert>;
                                     }
                                 })()}</td>

@@ -42,7 +42,7 @@ export default function Pruebas(props: formularioPruebasProps){
                     
                   </Grid>
                 </Grid>
-                <FieldArray name="criteriOBJ" >
+                <FieldArray name="criterios" >
                   
                   {({ push, remove }) => (
                     <Grid container spacing={2} sx={{ marginTop: 2, paddingX: 2 }}>
@@ -50,25 +50,25 @@ export default function Pruebas(props: formularioPruebasProps){
                         <Typography variant="h6" component="h2">
                           Criterios
                         </Typography>
-                        <b>Total Criterios: {values.criteriOBJ.length.toString()}</b>
+                        <b>Total Criterios: {values.criterios.length.toString()}</b>
                       </Grid>
-                      {values.criteriOBJ.map((_, index) => (
+                      {values.criterios.map((_, index) => (
                         <>
                         
                           <Grid item md={2.5}>
-                            <Field fullWidth name={`criteriOBJ.${index}.criterio`}  component={TextField} placeholder="Criterio" />
+                            <Field fullWidth name={`criterios.${index}.criterio`}  component={TextField} placeholder="Criterio" />
                           </Grid>
                           <Grid item md={2}>
-                            <Field fullWidth name={`criteriOBJ.${index}.insatisfactorio`} component={TextField} placeholder="Insatisfactorio" />
+                            <Field fullWidth name={`criterios.${index}.insatisfactorio`} component={TextField} placeholder="Insatisfactorio" />
                           </Grid>
                           <Grid item md={2}>
-                            <Field fullWidth name={`criteriOBJ.${index}.desarrollo`} component={TextField} placeholder="Desarrollo" />
+                            <Field fullWidth name={`criterios.${index}.desarrollo`} component={TextField} placeholder="Desarrollo" />
                           </Grid>
                           <Grid item md={2}>
-                            <Field fullWidth name={`criteriOBJ.${index}.satisfactorio`} component={TextField} placeholder="Satisfactorio" />
+                            <Field fullWidth name={`criterios.${index}.satisfactorio`} component={TextField} placeholder="Satisfactorio" />
                           </Grid>
                           <Grid item md={2}>
-                            <Field fullWidth name={`criteriOBJ.${index}.ejemplar`} component={TextField} placeholder="Ejemplar" />
+                            <Field fullWidth name={`criterios.${index}.ejemplar`} component={TextField} placeholder="Ejemplar" />
                           </Grid>
                            
                           {index > 0 && (
@@ -81,7 +81,7 @@ export default function Pruebas(props: formularioPruebasProps){
                         </>
                       ))}{" "}
                       <Grid item xs={12}>
-                        <Button onClick={() => push(props.modelo.criteriOBJ.push) } style={{ backgroundColor: '#001c43'}} >
+                        <Button onClick={() => push(props.modelo.criterios.push) } style={{ backgroundColor: '#001c43'}} >
                           Añadir Criterio
                         </Button>
  

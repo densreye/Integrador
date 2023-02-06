@@ -3,8 +3,8 @@ export interface rubricaCreacionDTO {
  
     nombre: string;
     clasificacion:string;
-    criterios:string;
-    criteriOBJ: Array<{
+    criterio:string;
+    criterios: Array<{
         criterio: string;
         insatisfactorio: string;
         desarrollo: string;
@@ -20,8 +20,8 @@ export interface rubricaDTO {
     id: number;//agregar un ID PARA RUBRICA
     nombre: string;
     clasificacion:string;
-    criterios:number;
-    criteriOBJ: Array<{
+    criterio:number;
+    criterios: Array<{
         criterio: string;
         insatisfactorio: string;
         desarrollo: string;

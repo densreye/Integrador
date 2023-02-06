@@ -1,19 +1,17 @@
 import { urlRutas } from "utils/endpoints";
-//import FormularioRubricas from "./FormularioRubrica";
-import FormularioRutas from "./FormularioRutaMed";
+import FormularioRuta from "./FormularioRutaMed";
 import axios from 'axios';
-//import { rubricaCreacionDTO } from "./rubricas.model";
+import { rutaCreacionDTO  } from "./rutasmed.model";
 import { useHistory } from "react-router-dom";
 import MostrarErrores from "utils/MostrarErrores";
 import { useState } from "react";
-import { rutaCreacionDTO } from "./rutasmed.model";
 
 
-export default function CrearRuta() {
+export default function CrearRutaPrueba() {
     const history = useHistory();
     const [errores,setErrores] = useState<string[]>([]);
-    
-    async function crear(rubrica: rutaCreacionDTO) {
+    const niveles= ["Bajo","Medio","Alto"];
+    async function crear(rubrica: rutaCreacionDTO ) {
         try{
            await axios.post(urlRutas,rubrica) 
            history.push('/rutasdemedicion')
@@ -29,23 +27,36 @@ export default function CrearRuta() {
             <h3>Crear Ruta de Medición</h3>
             <MostrarErrores/>
     
-            <FormularioRutas 
+            <FormularioRuta   
             modelo={{        
-            idCarrera: "",
-            idCurso: "",
-            idMateria: "",
-            descripcionEspanol:"",
-            descripcionIngles: "",
-            codigoMateria: "",
-            medicion: "",
-            materia: "",
-            paralelo: "",
+            carrera: "",//este valor es tomado del API_ESPOL
+            idCarrera:0, //este valor es tomado del API_ESPOL
+            nombrerub_espanol:"",//este valor es tomado del API_RUBRICAS
+            nombrerub_ingles: "",//revisar opcional o colocar translate de rubrica seleccionada
+            idRubrica:0,//este valor es tomado del API
+            niveles: [{   
+                    nivel: "",
+                    materia: "",
+                    idMateria:"",
+                    codMateria:"",
+                    paralelo: "",
+                    idCurso:"",
+                    docente: "",
+                   
+                }],
             fechaCreacion: new Date(),
             estado: "",
  
 
             }} 
                  onSubmit={async valores => {
+                    var a=0;
+
+                    while (a<valores.niveles.length) {
+                         valores.niveles[a].nivel= niveles[a];
+                         a++;
+                      }
+
                     await crear(valores);
                     console.log("VALORES ACTUALES",valores)
                  }}

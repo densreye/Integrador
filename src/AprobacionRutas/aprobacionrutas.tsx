@@ -6,12 +6,12 @@ import Button from "utils/Button";
 import { urlRutas } from "utils/endpoints";
 import ListadoGenerico from "utils/ListadoGenerico";
 import Paginacion from "utils/Paginacion";
-import { rutaDTO } from 'RutasMedicion/rutasmed.model';
+
 import confirmar from "utils/Confirmar";
 import Autorizado from "Auth/Autorizado";
 import confirmarEstado from "./confirmacionruta";
 import Swal from "sweetalert2";
- 
+import { rutaDTO } from 'RutasMedicion/rutasmed.model';
 
 import { Card, CardContent,} from "@mui/material";
 
@@ -19,7 +19,7 @@ import { Card, CardContent,} from "@mui/material";
 export default function IndiceAprobacionRutas() {
     const { id }: any = useParams();
 
-    const [generos,setGeneros]= useState<rutaDTO[]>();
+    const [rutas,setRutas]= useState<rutaDTO[]>();
     const [totalDePaginas,setTotalDePaginas]=useState(0);
     const [recordsPorPagina, setRecordsPorPagina]=useState(10);
     const [pagina,setPagina]=useState(1);
@@ -41,7 +41,7 @@ export default function IndiceAprobacionRutas() {
                 parseInt(respuesta.headers['cantidadtotalregistros'],10);
             setTotalDePaginas(Math.ceil(totalDeRegistros/recordsPorPagina));
             console.log(respuesta.data);
-            setGeneros(respuesta.data);
+            setRutas(respuesta.data);
         })
     }
 
@@ -107,7 +107,7 @@ return (
             </div>
             <Card sx={{ marginTop:10 }}>
             <CardContent sx={{ paddingY: 4, paddingX: 1 }}>
-            <ListadoGenerico listado={generos}>
+            <ListadoGenerico listado={rutas}>
                 <table className="table table-bordered">
                     <thead>
                         <tr className="color">
@@ -122,17 +122,16 @@ return (
                         </tr>
                     </thead>
                     <tbody>
-                        {generos?.map(genero=>
-                            <tr key={genero.idCarrera}>
-                                <td>
-                                    {genero.idCurso}
-                                </td>
-                                <td>{genero.codigoMateria}</td>
-                                <td>{genero.medicion}</td>
-                                <td>{genero.materia}</td>
-                                <td>{genero.estado}</td>
+                        {rutas?.map(ruta=>
+                            <tr key={ruta.id}><td>
+                            {ruta.carrera}
+                        </td>
+                        <td>CRITERIOS</td>
+                        <td>{ruta.niveles[1].materia}</td>
+                        <td>{ruta.niveles[1].materia}</td>
+                        <td>{ruta.niveles[1].materia}</td>
                                 <td>{(() => {
-                                    switch (genero.estado) {
+                                    switch (ruta.estado) {
                                     case "":   return <b>Pendiente</b>;
                                     case "Pendiente": return <b>Pendiente</b>;
                                     case "Aprobado":  return <b>Aprobado</b>;
@@ -143,12 +142,12 @@ return (
                                     autorizado={<>  
                               
                                      <Button className='btn btn-primary'
-                                    onClick={()=>confirmarEstado(()=> aprobarEstado(genero), 
-                                        `¿Desea aprobar ${genero.idCarrera} ?`, 'Realizar')}
+                                    onClick={()=>confirmarEstado(()=> aprobarEstado(ruta), 
+                                        `¿Desea aprobar ${ruta.nombrerub_espanol} ?`, 'Realizar')}
                                         style={{backgroundColor: '#001c43'}}   >Aprobar</Button>
                                     <Button
-                                    onClick={()=>confirmarEstado(()=> rechazarEstado(genero), 
-                                        `¿ Seguro desea rechazar la rúbrica: ${genero.idCarrera} ?`, 'Realizar')}
+                                    onClick={()=>confirmarEstado(()=> rechazarEstado(ruta), 
+                                        `¿ Seguro desea rechazar la rúbrica: ${ruta.nombrerub_espanol} ?`, 'Realizar')}
                                         className="btn btn-danger" >Rechazar</Button>
                                      
                                     </>}

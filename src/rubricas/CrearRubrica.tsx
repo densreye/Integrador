@@ -30,9 +30,9 @@ export default function CrearRubrica() {
             <FormularioRubricas   
             modelo={{        
             nombre: "",
-            criterios:"",
+            criterio:"",
             clasificacion: "",
-            criteriOBJ: [{   
+            criterios: [{   
                   
                     criterio: "",
                     insatisfactorio: "",

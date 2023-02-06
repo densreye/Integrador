@@ -22,6 +22,7 @@
     "force": "0.0.3",
     "formik": "^2.2.6",
     "formik-material-ui": "^4.0.0-alpha.2",
+    "formik-stepper": "^2.1.4",
     "i": "^0.3.7",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.28",

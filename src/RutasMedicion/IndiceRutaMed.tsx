@@ -15,11 +15,9 @@ import Swal from "sweetalert2";
 import { Card, CardContent,} from "@mui/material";
 import { rutaCreacionDTO } from "./rutasmed.model";
 import { rutaDTO } from "./rutasmed.model";
-import jsPDF from "jspdf";
-import PDFPrint from "./DescPdf";
 
 export default function RutaMedicion() {
-    const [generos,setGeneros]= useState<rutaDTO []>();
+    const [rutas,setGeneros]= useState<rutaDTO []>();
     const [totalDePaginas,setTotalDePaginas]=useState(0);
     const [recordsPorPagina, setRecordsPorPagina]=useState(10);
     const [pagina,setPagina]=useState(1);
@@ -52,10 +50,7 @@ export default function RutaMedicion() {
         }
     }
 
-    
-
- 
-    
+   
 
 return (
         <>
@@ -68,7 +63,7 @@ return (
 
             <br></br>
             
-            <Link className="btn btn-primary" style={{ backgroundColor: '#001c43'}} to="rutasdemedicion/crear" >Crear Ruta de Medición</Link>
+            <Link className="btn btn-primary" style={{ backgroundColor: '#212fff'}} to="rutasdemedicion/crear" >Crear Ruta de Medición</Link>
             <br></br>
             <br></br>
             
@@ -81,7 +76,6 @@ return (
             
             <div className="form-group" style={{width:'150px'}}>
                 <label> Registros por página: </label>
-                
                 <select 
                     defaultValue={10}
                     className="form-control" 
@@ -93,40 +87,35 @@ return (
                     <option value={25}>25</option>
                     <option value={50}>50</option>
                 </select>
-                
             </div>
-
             <Card sx={{ marginTop:10 }}>
-            <PDFPrint></PDFPrint>
             <CardContent sx={{ paddingY: 5, paddingX: 1 }}>
-              
             
-          
+            
                 <table className="table table-bordered">
                     <thead>
                         <tr className="color">
-                            <th>Id Carrera</th>
+                            <th>Carrera</th>
                             <th>Id Curso</th>
                             <th>Código Materia</th>
                             <th>Medición</th>
                             <th>Materia</th>
                             <th>Estado</th>
-                            <th>Acciones</th>
-                            
+                            <th>Estado</th>
                             
                         </tr>
                     </thead>
                     <tbody>
-                        {generos?.map(genero=>
-                            <tr key={genero.idCarrera}><td>
-                                    {genero.idCurso}
+                        {rutas?.map(ruta=>
+                            <tr key={ruta.id}><td>
+                                    {ruta.carrera}
                                 </td>
                                 <td>CRITERIOS</td>
-                                <td>{genero.codigoMateria}</td>
-                                <td>{genero.medicion}</td>
-                                <td>{genero.materia}</td>
+                                <td>mat1</td>
+                                <td>mat2</td>
+                                <td>mat3</td>
                                 <td>{(() => {
-                                    switch (genero.estado) {
+                                    switch (ruta.estado) {
                                     case "":   return <b>Pendiente</b>;
                                     case "Pendiente": return <b>Pendiente</b>;
                                     case "Aprobado":  return <b>Aprobado</b>;
@@ -138,32 +127,32 @@ return (
                                 <Autorizado role="admin"
                                     autorizado={
                                     <td>{(() => {
-                                        switch (genero.estado) {
+                                        switch (ruta.estado) {
                                         case "":   return  <><Link className='btn btn-primary'
-                                        style={{ backgroundColor: '#001c43'}}
-                                        to={`/rutasdemedicion/editar/${genero.id}`}>
+                                        style={{ backgroundColor: '#212fff'}} 
+                                        to={`/rutasdemedicion/editar/${ruta.id}`}>
                                             Editar
                                         </Link>
                                         <Button
-                                        onClick={()=>confirmar(()=>borrar(genero.id))}
+                                        onClick={()=>confirmar(()=>borrar(ruta.id))}
                                         className="btn btn-danger">Borrar</Button></>;
                                         case "Pendiente": return <><Link className='btn btn-primary'
-                                                            style={{ backgroundColor: '#001c43'}} 
-                                                            to={`/rutasdemedicion/editar/${genero.id}`}>
+                                                            style={{ backgroundColor: '#212fff'}} 
+                                                            to={`/rutasdemedicion/editar/${ruta.id}`}>
                                                                 Editar
                                                             </Link>
                                                             <Button
-                                                            onClick={()=>confirmar(()=>borrar(genero.id))}
+                                                            onClick={()=>confirmar(()=>borrar(ruta.id))}
                                                             className="btn btn-danger">Borrar</Button>
                                                             </>;
                                         case "Aprobado":  return <b> </b>;
                                         case "Rechazado":  return <><Link className='btn btn-primary' 
                                                         style={{ backgroundColor: '#212fff'}} 
-                                                        to={`/rutasdemedicion/editar/${genero.id}`}>
+                                                        to={`/rutasdemedicion/editar/${ruta.id}`}>
                                                             Editar
                                                         </Link>
                                                         <Button
-                                                        onClick={()=>confirmar(()=>borrar(genero.id))}
+                                                        onClick={()=>confirmar(()=>borrar(ruta.id))}
                                                         className="btn btn-danger">Borrar</Button></>;
                                         }
                                         
@@ -177,7 +166,7 @@ return (
                                         
           
             <Paginacion cantidadTotalDePaginas={totalDePaginas}
-            paginaActual={pagina} onChange={nuevaPagina=> setPagina(nuevaPagina)} />
+            paginaActual={pagina} onChange={nuevaPagina=> setPagina(nuevaPagina)}/>
             </CardContent>
             </Card>
             
