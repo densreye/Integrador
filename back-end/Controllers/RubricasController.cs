@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.CSharp.RuntimeBinder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using RubricasAPI.DTOs;
@@ -46,30 +47,47 @@ namespace RubricasAPI.Controllers
 
         [HttpGet("todos")]
         [AllowAnonymous]
-        public async Task<ActionResult<List<RubricaDTO>>> Todos()
+        public async Task<ActionResult<List<Rubrica>>> Todos()
         {
-            var rubrica = await context.Rubricas.OrderBy(x => x.Nombre).ToListAsync();
-            return mapper.Map<List<RubricaDTO>>(rubrica);
+            var rubrica = await context.Rubricas.Include(x => x.Criterios).ToListAsync();
+
+            // return mapper.Map<List<RubricaDTO>>(rubrica);
+            return rubrica;
         }
 
         [HttpGet("{Id:int}")]
-        public async Task<ActionResult<RubricaDTO>> Get(int Id)
+        public async Task<ActionResult<Rubrica>> Get(int id)
         {
-            var rubrica = await context.Rubricas.FirstOrDefaultAsync(x => x.Id == Id);
+            var rubrica = await context.Rubricas
+                .Include(x => x.Criterios) 
+                .FirstOrDefaultAsync(x=>x.Id == id);
 
             if (rubrica == null)
             {
                 return NotFound();
             }
-
-            return mapper.Map<RubricaDTO>(rubrica);
+            
+            return rubrica;
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] RubricaCreacionDTO generoCreacionDTO)
+        public async Task<ActionResult> Post([FromBody] Rubrica generoCreacionDTO)
         {
             var rubrica = mapper.Map<Rubrica>(generoCreacionDTO);
-            context.Add(rubrica);
+            Console.Write(rubrica.Criterios);
+            var rubricaTemp = new Rubrica
+            {
+                Nombre = rubrica.Nombre,
+                Clasificacion = rubrica.Clasificacion,
+                Estado= rubrica.Estado,
+                FechaCreacion= rubrica.FechaCreacion,
+                Criterios = new List<Criterios>(rubrica.Criterios)
+ 
+            };
+        
+            
+          // var rubrica = mapper.Map<Rubrica>(generoCreacionDTO);
+            context.Add(rubricaTemp);
             await context.SaveChangesAsync();
             return NoContent();
         }

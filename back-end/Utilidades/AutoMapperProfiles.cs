@@ -24,7 +24,14 @@ namespace RubricasAPI.Utilidades
 
             CreateMap<Rutas, RutaDTO>().ReverseMap();
             CreateMap<RutaCreacionDTO, Rutas>();
+
+
+            CreateMap<Niveles, NivelesDTO>().ReverseMap();
+            CreateMap<NivelesCreacionDTO, Niveles>();
+
         }
+
+
     }
 }
 

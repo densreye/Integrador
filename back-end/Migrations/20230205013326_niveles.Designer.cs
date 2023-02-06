@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RubricasAPI;
 
@@ -11,9 +12,11 @@ using RubricasAPI;
 namespace RubricasAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230205013326_niveles")]
+    partial class niveles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -264,9 +267,6 @@ namespace RubricasAPI.Migrations
                     b.Property<string>("CodMateria")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Docente")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("IdCurso")
                         .HasColumnType("int");
 
@@ -282,8 +282,11 @@ namespace RubricasAPI.Migrations
                     b.Property<string>("Paralelo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RutasId")
+                    b.Property<int?>("RutasId")
                         .HasColumnType("int");
+
+                    b.Property<string>("docente")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -419,9 +422,7 @@ namespace RubricasAPI.Migrations
                 {
                     b.HasOne("RubricasAPI.Entidades.Rutas", "Rutas")
                         .WithMany("Niveles")
-                        .HasForeignKey("RutasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RutasId");
 
                     b.Navigation("Rutas");
                 });

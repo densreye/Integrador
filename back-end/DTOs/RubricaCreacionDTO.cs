@@ -1,4 +1,5 @@
-﻿using RubricasAPI.Validaciones;
+﻿using RubricasAPI.Entidades;
+using RubricasAPI.Validaciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,9 +15,8 @@ namespace RubricasAPI.DTOs
         [PrimeraLetraMayuscula]
         public string Nombre { get; set; }
         public string Clasificacion { get; set; }
-        public string Criterios { get; set; }
         public DateTime FechaCreacion { get; set; }
-
         public string Estado { get; set; }
+        public ICollection<Criterios> Criterios { get; set; }
     }
 }

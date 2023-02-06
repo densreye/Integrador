@@ -1,4 +1,6 @@
-﻿namespace RubricasAPI.Entidades
+﻿using System.Collections.Generic;
+
+namespace RubricasAPI.Entidades
 {
     public class Criterios
     {
@@ -8,6 +10,8 @@
         public string Desarrollo { get; set; }
         public string Satisfactorio { get; set; }
         public string Ejemplar { get; set; }
+
+        public Rubrica Rubrica { get; set; }
 
     }
 }

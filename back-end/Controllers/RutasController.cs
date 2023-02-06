@@ -38,7 +38,7 @@ namespace RubricasAPI.Controllers
         {
             var queryable = context.Rutasdemedicion.AsQueryable();
             await HttpContext.InsertarParametrosPaginacionEnCabecera(queryable);
-            var rutas = await queryable.OrderBy(x => x.Paralelo).Paginar(paginacionDTO).ToListAsync();
+            var rutas = await queryable.OrderBy(x => x.Carrera).Paginar(paginacionDTO).ToListAsync();
             return mapper.Map<List<RutaDTO>>(rutas);
         }
 
@@ -46,7 +46,7 @@ namespace RubricasAPI.Controllers
         [AllowAnonymous]
         public async Task<ActionResult<List<RutaDTO>>> Todos()
         {
-            var ruta = await context.Rutasdemedicion.OrderBy(x => x.Paralelo).ToListAsync();
+            var ruta = await context.Rutasdemedicion.OrderBy(x => x.Carrera).ToListAsync();
             return mapper.Map<List<RutaDTO>>(ruta);
         }
 

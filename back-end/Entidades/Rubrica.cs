@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,10 +17,10 @@ namespace RubricasAPI.Entidades
         [PrimeraLetraMayuscula]
         public string Nombre { get; set; }
         public string Clasificacion { get; set; }
-        public string Criterios { get; set; }
         public DateTime FechaCreacion { get; set; }
 
         public string Estado { get; set; }
+        public  ICollection<Criterios> Criterios { get; set; }
 
     }
 }

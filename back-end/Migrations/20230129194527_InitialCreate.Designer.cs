@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RubricasAPI;
 
@@ -11,9 +12,11 @@ using RubricasAPI;
 namespace RubricasAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230129194527_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,45 +256,6 @@ namespace RubricasAPI.Migrations
                     b.ToTable("Criterios");
                 });
 
-            modelBuilder.Entity("RubricasAPI.Entidades.Niveles", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CodMateria")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Docente")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdCurso")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdMateria")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Materia")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nivel")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Paralelo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RutasId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RutasId");
-
-                    b.ToTable("Niveles");
-                });
-
             modelBuilder.Entity("RubricasAPI.Entidades.Rubrica", b =>
                 {
                     b.Property<int>("Id")
@@ -327,7 +291,13 @@ namespace RubricasAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Carrera")
+                    b.Property<string>("CodigoMateria")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescripcionEspanol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescripcionIngles")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estado")
@@ -339,13 +309,19 @@ namespace RubricasAPI.Migrations
                     b.Property<int>("IdCarrera")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdRubrica")
+                    b.Property<int>("IdCurso")
                         .HasColumnType("int");
 
-                    b.Property<string>("nombrerub_espanol")
+                    b.Property<int>("IdMateria")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Materia")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("nombrerub_ingles")
+                    b.Property<string>("Medicion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Paralelo")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -415,25 +391,9 @@ namespace RubricasAPI.Migrations
                     b.Navigation("Rubrica");
                 });
 
-            modelBuilder.Entity("RubricasAPI.Entidades.Niveles", b =>
-                {
-                    b.HasOne("RubricasAPI.Entidades.Rutas", "Rutas")
-                        .WithMany("Niveles")
-                        .HasForeignKey("RutasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Rutas");
-                });
-
             modelBuilder.Entity("RubricasAPI.Entidades.Rubrica", b =>
                 {
                     b.Navigation("Criterios");
-                });
-
-            modelBuilder.Entity("RubricasAPI.Entidades.Rutas", b =>
-                {
-                    b.Navigation("Niveles");
                 });
 #pragma warning restore 612, 618
         }

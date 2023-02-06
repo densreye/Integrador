@@ -12,8 +12,8 @@ using RubricasAPI;
 namespace RubricasAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230112055024_Initials")]
-    partial class Initials
+    [Migration("20230205014320_nivelesUpdate")]
+    partial class nivelesUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -243,12 +243,56 @@ namespace RubricasAPI.Migrations
                     b.Property<string>("Insatisfactorio")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("RubricaId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Satisfactorio")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RubricaId");
+
                     b.ToTable("Criterios");
+                });
+
+            modelBuilder.Entity("RubricasAPI.Entidades.Niveles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CodMateria")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Docente")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdCurso")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdMateria")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Materia")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nivel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Paralelo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RutasId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RutasId");
+
+                    b.ToTable("Niveles");
                 });
 
             modelBuilder.Entity("RubricasAPI.Entidades.Rubrica", b =>
@@ -260,9 +304,6 @@ namespace RubricasAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Clasificacion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Criterios")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estado")
@@ -289,13 +330,7 @@ namespace RubricasAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CodigoMateria")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DescripcionEspanol")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DescripcionIngles")
+                    b.Property<string>("Carrera")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estado")
@@ -307,19 +342,13 @@ namespace RubricasAPI.Migrations
                     b.Property<int>("IdCarrera")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdCurso")
+                    b.Property<int>("IdRubrica")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdMateria")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Materia")
+                    b.Property<string>("nombrerub_espanol")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Medicion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Paralelo")
+                    b.Property<string>("nombrerub_ingles")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -376,6 +405,38 @@ namespace RubricasAPI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("RubricasAPI.Entidades.Criterios", b =>
+                {
+                    b.HasOne("RubricasAPI.Entidades.Rubrica", "Rubrica")
+                        .WithMany("Criterios")
+                        .HasForeignKey("RubricaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rubrica");
+                });
+
+            modelBuilder.Entity("RubricasAPI.Entidades.Niveles", b =>
+                {
+                    b.HasOne("RubricasAPI.Entidades.Rutas", "Rutas")
+                        .WithMany("Niveles")
+                        .HasForeignKey("RutasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rutas");
+                });
+
+            modelBuilder.Entity("RubricasAPI.Entidades.Rubrica", b =>
+                {
+                    b.Navigation("Criterios");
+                });
+
+            modelBuilder.Entity("RubricasAPI.Entidades.Rutas", b =>
+                {
+                    b.Navigation("Niveles");
                 });
 #pragma warning restore 612, 618
         }
