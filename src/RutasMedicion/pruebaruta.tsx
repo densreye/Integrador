@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
-import * as Yup from 'yup'
+ 
 import FormGroupText from '../utils/FormGroupText'
 import Button from '../utils/Button'
 import { rutaCreacionDTO  } from "./rutasmed.model";
-
-import { Formik, Field, FieldArray, FormikHelpers,FormikConfig,FormikValues } from "formik";
+ 
+import { Formik, Field, FieldArray, FormikHelpers} from "formik";
 import { Container, Card, CardContent, Typography, Grid } from "@mui/material";
 import { TextField } from "formik-material-ui";
 import { FormStepper} from "../RutasMedicion/FormStepper";

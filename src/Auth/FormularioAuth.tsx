@@ -5,7 +5,7 @@ import FormGroupText from "utils/FormGroupText";
 import Button from "utils/Button";
 import { Link } from "react-router-dom";
 import { Grid, Typography, Card, CardContent } from "@mui/material";
-import { styled } from '@mui/material/styles';
+ 
 import fondo from './fondo.jpg';
 
 export default function FormularioAuth(props: formularioAuthProps){

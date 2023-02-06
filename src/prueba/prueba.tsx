@@ -1,12 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import * as Yup from 'yup'
 import FormGroupText from '../utils/FormGroupText'
 import Button from '../utils/Button'
 import { rubricaCreacionDTO } from "rubricas/rubricas.model";
-
 import { Formik, Field, FieldArray, FormikHelpers} from "formik";
-import { Container, Card, CardContent, Typography, Grid,TextareaAutosize } from "@mui/material";
+import { Card, CardContent, Typography, Grid} from "@mui/material";
 import { TextField } from "formik-material-ui";
 import { FormStepper } from "../prueba/FormStepper";
 

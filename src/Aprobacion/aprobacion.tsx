@@ -1,29 +1,28 @@
 import React from 'react';
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Button from "utils/Button";
 import { urlRubricas } from "utils/endpoints";
 import ListadoGenerico from "utils/ListadoGenerico";
 import Paginacion from "utils/Paginacion";
 import { rubricaDTO } from "rubricas/rubricas.model";
-import confirmar from "utils/Confirmar";
+ 
 import Autorizado from "Auth/Autorizado";
 import confirmarEstado from "./confaprob";
-import Swal from "sweetalert2";
  
 
 import { Card, CardContent,} from "@mui/material";
 
 
 export default function IndiceAprobacion() {
-    const { id }: any = useParams();
+ 
 
     const [generos,setGeneros]= useState<rubricaDTO[]>();
     const [totalDePaginas,setTotalDePaginas]=useState(0);
     const [recordsPorPagina, setRecordsPorPagina]=useState(10);
     const [pagina,setPagina]=useState(1);
-    const [modificar, setmodificar]=useState<rubricaDTO>();
+ 
 
     const history = useHistory();
    

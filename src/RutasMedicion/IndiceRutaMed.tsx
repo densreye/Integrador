@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "utils/Button";
 
-import ListadoGenerico from "utils/ListadoGenerico";
+ 
 import Paginacion from "utils/Paginacion";
-import { rubricaDTO } from "rubricas/rubricas.model";
+ 
 import confirmar from "utils/Confirmar";
 import Autorizado from "Auth/Autorizado";
 import { urlRutas } from "utils/endpoints";
 
-import Swal from "sweetalert2";
+ 
 
 import { Card, CardContent,} from "@mui/material";
-import { rutaCreacionDTO } from "./rutasmed.model";
+ 
 import { rutaDTO } from "./rutasmed.model";
 
 export default function RutaMedicion() {

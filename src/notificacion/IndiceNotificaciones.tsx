@@ -6,7 +6,7 @@ import ListadoGenerico from "utils/ListadoGenerico";
  
 import { rubricaDTO } from "rubricas/rubricas.model";
 import { rutaDTO } from "RutasMedicion/rutasmed.model";
-import { Container, Card, CardContent, Typography, Grid, Button,Alert, AlertTitle } from "@mui/material";
+import { Card, CardContent, Grid,Alert, AlertTitle } from "@mui/material";
 import Paginacion from "utils/Paginacion";
 
  
@@ -71,7 +71,7 @@ return (
                                 <tr className="color">
                                     <th>Estado de Rúbricas</th>
                                 </tr>
-                                <hr className="hr_header"></hr>
+                               
                             </thead>
                             <tbody>
                                 {generos?.map(genero=>
@@ -116,11 +116,11 @@ return (
                                 <tr className="color">
                                     <th>Estado de Rutas de Medición</th>
                                 </tr>
-                                <hr className="hr_header"></hr>
+                              
                             </thead>
                             <tbody>
                                 {rutas?.map(ruta=>
-                                    <tr key={ruta.nombrerub_espanol}>
+                                    <tr key={ruta.id}>
                                 
                                         <td>{(() => {
                                     switch (ruta.estado) {
