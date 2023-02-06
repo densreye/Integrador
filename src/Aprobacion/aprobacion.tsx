@@ -135,16 +135,16 @@ return (
                                     default:      return <b>Pendiente</b>;
                                     }
                                 })()}</td><td><Autorizado role="admin"
-                                    autorizado={<>  
+                                    autorizado={<> 
                               
-                                     <Button className='btn btn-primary'
+                                     <Button className='btn btn-primary m-2 "  '
                                     onClick={()=>confirmarEstado(()=> aprobarEstado(genero), 
                                         `¿Desea aprobar ${genero.nombre} ?`, 'Realizar')}
                                         style={{backgroundColor: '#001c43'}}   >Aprobar</Button>
                                     <Button
                                     onClick={()=>confirmarEstado(()=> rechazarEstado(genero), 
                                         `¿ Seguro desea rechazar la rúbrica: ${genero.nombre} ?`, 'Realizar')}
-                                        className="btn btn-danger" >Rechazar</Button>
+                                        className="btn btn-danger m-2" >Rechazar</Button>
                                      
                                     </>}
                                 /></td>
