@@ -100,7 +100,7 @@ return (
                     </thead>
                     <tbody>
                         {generos?.map(genero=>
-                            <tr key={genero.id}><td>
+                            <tr key={genero.id}  className="color"><td>
                                     {genero.nombre}
                                 </td>
                                 <td>CRITERIOS</td>
@@ -129,7 +129,7 @@ return (
                                         onClick={()=>confirmar(()=>borrar(genero.id))}
                                         className="btn btn-danger">Borrar</Button></>;
                                         case "Pendiente": return <><Link className='btn btn-primary'
-                                                            style={{ backgroundColor: '#212fff'}} 
+                                                            style={{ backgroundColor: '#001c43'}} 
                                                             to={`/rubricas/editar/${genero.id}`}>
                                                                 Editar
                                                             </Link>
@@ -139,7 +139,7 @@ return (
                                                             </>;
                                         case "Aprobado":  return <b> </b>;
                                         case "Rechazado":  return <><Link className='btn btn-primary' 
-                                                        style={{ backgroundColor: '#212fff'}} 
+                                                        style={{ backgroundColor: '#001c43'}} 
                                                         to={`/rubricas/editar/${genero.id}`}>
                                                             Editar
                                                         </Link>

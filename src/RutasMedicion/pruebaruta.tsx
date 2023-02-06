@@ -17,11 +17,11 @@ import { FormStepper} from "../prueba/FormStepper";
 export default function PruebasRutas(props: formularioPruebasRutasProps){
 
   return (
-    <Grid sx={{ bgcolor: "#001c43", paddingY: 5, marginTop: 5 }}  >
+    <Container sx={{ bgcolor: "#001c43", paddingY: 5, marginTop: 5 }}  >
       <Typography variant="h2"  align="center" component="h2" style={{ backgroundColor: "001c43",color:"white" }}>
         Formulario Rutas
       </Typography>
-      <Card sx={{ marginTop: 2}}>
+      <Card sx={{ marginTop: 2 }}>
         <CardContent sx={{ paddingY: 10, paddingX: 5 }}>
           
           <Formik
@@ -33,8 +33,8 @@ export default function PruebasRutas(props: formularioPruebasRutasProps){
             
             {({ values}) => (
               <FormStepper >
-                <Grid container spacing={2} md={8}>
-                  <Grid item md={6}>
+                <Grid container spacing={2} >
+                  <Grid item md={3}>
                     <FormGroupText campo="carrera" name="carrera"  placeholder="Carrera" />
                   </Grid>
  
@@ -98,7 +98,7 @@ export default function PruebasRutas(props: formularioPruebasRutasProps){
           </Formik>
         </CardContent>
       </Card>
-    </Grid>
+    </Container>
   );
 };
 

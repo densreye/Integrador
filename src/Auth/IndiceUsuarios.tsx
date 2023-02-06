@@ -49,7 +49,7 @@ export default function IndiceUsuarios() {
                     </tr>
                 </thead>
                 <tbody>
-                    {usuarios?.map(usuario => <tr key={usuario.id}>
+                    {usuarios?.map(usuario => <tr key={usuario.id} className="color">
                         <td>
                             {usuario.email}
                         </td>

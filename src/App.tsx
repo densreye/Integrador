@@ -9,7 +9,7 @@ import AutenticacionContext from 'Auth/AutenticacionContext';
 import { claim } from 'Auth/auth.model';
 import { obtenerClaims } from 'Auth/manejadorJWT';
 import logo from 'Images/stac.png'
-
+import Footer from 'utils/Footer';
 configurarValidaciones();
  
 function App() {
@@ -54,6 +54,7 @@ function App() {
                   {ruta.esAdmin && !esAdmin() ? <>
                     No tiene permiso para acceder a este componente
                     </> : <ruta.componente />}
+                    <Footer></Footer>
                 </Route>)}
             </Switch>
          </div>

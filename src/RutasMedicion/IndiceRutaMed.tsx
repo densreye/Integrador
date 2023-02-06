@@ -107,7 +107,7 @@ return (
                     </thead>
                     <tbody>
                         {rutas?.map(ruta=>
-                            <tr key={ruta.id}><td>
+                            <tr key={ruta.id} className="color"><td>
                                     {ruta.carrera}
                                 </td>
                                 <td>CRITERIOS</td>

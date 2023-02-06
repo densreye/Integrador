@@ -58,9 +58,19 @@ thead>tr.color{
   background-color: #001c43;
   color:rgb(240, 240, 240);
 }
-
+tbody>tr.color{
+  background-color: #f2fbff;
+ 
+}
 .btn-primary {
   color: #fff;
   /* background-color: #007bff; */
   border-color: #001c43;
 }
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  color: #fff;
+}
+
