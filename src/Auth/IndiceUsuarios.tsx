@@ -12,6 +12,9 @@ export default function IndiceUsuarios() {
     async function hacerAdmin(id: string) {
         await editarAdmin(`${urlCuentas}/hacerAdmin`, id);
     }
+    async function hacerCoordinador(id: string) {
+        await editarAdmin(`${urlCuentas}/hacerCoordinador`, id);
+    }
 
     async function removerAdmin(id: string) {
         await editarAdmin(`${urlCuentas}/removerAdmin`, id);
@@ -52,12 +55,17 @@ export default function IndiceUsuarios() {
                         <tr key={usuario.id} className="color"><td>
                                 {usuario.email}
                             </td>
-                            <td>
+                            <td> 
                                 <Button
                                     onClick={() => confirmar(() => hacerAdmin(usuario.id),
                                         `¿Desea hacer a ${usuario.email} admin?`, 'Realizar')}
                                         style={{ backgroundColor: '#001c43'}}    >
                                     Hacer Admin</Button>
+                                    <Button 
+                                    onClick={() => confirmar(() => hacerCoordinador(usuario.id),
+                                        `¿Desea hacer a ${usuario.email} Coordinador?`, 'Realizar')}
+                                         className="btn btn-secondary m-2 "    >
+                                    Hacer Coordinador</Button>
                                 <Button className="btn btn-danger" style={{ marginLeft: '2rem' }}
                                     onClick={() => confirmar(() => removerAdmin(usuario.id),
                                         `¿Desea remover a ${usuario.email} como admin?`, 'Realizar')}>
