@@ -30,6 +30,25 @@ export default function Menu() {
                                 Rúbricas
                             </NavLink>
                         </li>
+                        <Autorizado role='coordinador'
+                            autorizado={
+                            <>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link text-white" activeClassName={claseActiva} 
+                                    to="/rutasdemedicion">
+                                    Rutas de Medición
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link text-white" activeClassName={claseActiva} 
+                                    to="/notificaciones">
+                                        Notificaciones
+                                    </NavLink>
+                                </li>
+                            </>
+                            }/>
+                                
+                
                         <Autorizado role='admin'
                             autorizado={
                                 <>
@@ -39,12 +58,15 @@ export default function Menu() {
                                         Aprobación Rúbricas
                                     </NavLink>
                                     </li>
-                                    <li className="nav-item">
-                                    <NavLink className="nav-link text-white" activeClassName={claseActiva} 
-                                    to="/rutasdemedicion">
-                                        Rutas de Medición
-                                    </NavLink>
-                                    </li>
+             
+                                        <li className="nav-item">
+                                        <NavLink className="nav-link text-white" activeClassName={claseActiva} 
+                                        to="/rutasdemedicion">
+                                            Rutas de Medición
+                                        </NavLink>
+                                        </li>
+                              
+
                                     <li className="nav-item">
                                     <NavLink className="nav-link text-white" activeClassName={claseActiva} 
                                     to="/aprobacionesrutas">

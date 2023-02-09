@@ -58,20 +58,20 @@ return (
 
             
             <Autorizado role="admin" autorizado={
-            
-            <>
-
-            <br></br>
-            
-            <Link className="btn btn-primary" style={{ backgroundColor: '#212fff'}} to="rutasdemedicion/crear" >Crear Ruta de Medición</Link>
-            <br></br>
-            <br></br>
-            
-            <b>Estás autorizado</b>
-            </>}
-            
-                noAutorizado={<b>No autorizado</b>}
-                
+                <>
+                <br></br>
+                <Link className="btn btn-primary" style={{ backgroundColor: '#001c43'}}to="rutasdemedicion/crear" >Crear Ruta de Medición</Link>
+                <br></br>
+                <br></br>
+                </>}
+            />
+                        <Autorizado role="coordinador" autorizado={
+                <>
+                <br></br>
+                <Link className="btn btn-primary" style={{ backgroundColor: '#001c43'}}to="rutasdemedicion/crear" >Crear Ruta de Medición</Link>
+                <br></br>
+                <br></br>
+                </>}
             />
             
             <div className="form-group" style={{width:'150px'}}>
@@ -129,7 +129,7 @@ return (
                                     <td>{(() => {
                                         switch (ruta.estado) {
                                         case "":   return  <><Link className='btn btn-primary'
-                                        style={{ backgroundColor: '#212fff'}} 
+                                        style={{ backgroundColor: '#001c43'}}
                                         to={`/rutasdemedicion/editar/${ruta.id}`}>
                                             Editar
                                         </Link>
@@ -137,7 +137,7 @@ return (
                                         onClick={()=>confirmar(()=>borrar(ruta.id))}
                                         className="btn btn-danger">Borrar</Button></>;
                                         case "Pendiente": return <><Link className='btn btn-primary'
-                                                            style={{ backgroundColor: '#212fff'}} 
+                                        style={{ backgroundColor: '#001c43'}}
                                                             to={`/rutasdemedicion/editar/${ruta.id}`}>
                                                                 Editar
                                                             </Link>
@@ -147,7 +147,42 @@ return (
                                                             </>;
                                         case "Aprobado":  return <b> </b>;
                                         case "Rechazado":  return <><Link className='btn btn-primary' 
-                                                        style={{ backgroundColor: '#212fff'}} 
+                                        style={{ backgroundColor: '#001c43'}}
+                                                        to={`/rutasdemedicion/editar/${ruta.id}`}>
+                                                            Editar
+                                                        </Link>
+                                                        <Button
+                                                        onClick={()=>confirmar(()=>borrar(ruta.id))}
+                                                        className="btn btn-danger">Borrar</Button></>;
+                                        }
+                                        
+                                    })()}</td>
+                                    }
+                                    />
+                                   <Autorizado role="coordinador"
+                                    autorizado={
+                                    <td>{(() => {
+                                        switch (ruta.estado) {
+                                        case "":   return  <><Link className='btn btn-primary'
+                                        style={{ backgroundColor: '#001c43'}}
+                                        to={`/rutasdemedicion/editar/${ruta.id}`}>
+                                            Editar
+                                        </Link>
+                                        <Button
+                                        onClick={()=>confirmar(()=>borrar(ruta.id))}
+                                        className="btn btn-danger">Borrar</Button></>;
+                                        case "Pendiente": return <><Link className='btn btn-primary'
+                                        style={{ backgroundColor: '#001c43'}}
+                                                            to={`/rutasdemedicion/editar/${ruta.id}`}>
+                                                                Editar
+                                                            </Link>
+                                                            <Button
+                                                            onClick={()=>confirmar(()=>borrar(ruta.id))}
+                                                            className="btn btn-danger">Borrar</Button>
+                                                            </>;
+                                        case "Aprobado":  return <b> </b>;
+                                        case "Rechazado":  return <><Link className='btn btn-primary' 
+                                        style={{ backgroundColor: '#001c43'}}
                                                         to={`/rutasdemedicion/editar/${ruta.id}`}>
                                                             Editar
                                                         </Link>

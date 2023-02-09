@@ -9,11 +9,11 @@ export default function Footer() {
         <hr></hr>
  
         <ul className="menu nav ml-3">
-            <li className="first leaf"><a href="http://www.abet.org/" target="_blank">ABET</a></li>
-            <li className="leaf"><a href="http://www.aacsb.edu/" target="_blank">AACSB</a></li>
-            <li className="leaf"><a href="http://www.senescyt.gob.ec/web/guest" target="_blank">SENESCYT</a></li>
-            <li className="leaf"><a href="https://www.caces.gob.ec/" target="_blank">CACES</a></li>
-            <li className="last leaf"><a href="http://www.ces.gob.ec/" target="_blank">CES</a></li>
+            <li className="first leaf"><a href="http://www.abet.org/">ABET</a></li>
+            <li className="leaf"><a href="http://www.aacsb.edu/">AACSB</a></li>
+            <li className="leaf"><a href="http://www.senescyt.gob.ec/web/guest">SENESCYT</a></li>
+            <li className="leaf"><a href="https://www.caces.gob.ec/">CACES</a></li>
+            <li className="last leaf"><a href="http://www.ces.gob.ec/">CES</a></li>
         </ul>
  
   </div>

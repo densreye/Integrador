@@ -26,7 +26,9 @@ function App() {
   function esAdmin() {
     return claims.findIndex(claim => claim.nombre === 'role' && claim.valor === 'admin') > -1;
   }
-
+  function esCoordinador() {
+    return claims.findIndex(claim => claim.nombre === 'role' && claim.valor === 'coordinador') > -1;
+  }
   return (
     <>
    
@@ -50,10 +52,13 @@ function App() {
             <Switch>
               {rutas.map(ruta =>
                 <Route key={ruta.path} path={ruta.path}
-                  exact={ruta.exact}>
-                  {ruta.esAdmin && !esAdmin() ? <>
-                    No tiene permiso para acceder a este componente
-                    </> : <ruta.componente />}
+                  exact={ruta.exact}>{
+                    ruta.esCoordinador && !esCoordinador() ? <>No tiene permiso para acceder a este componente.
+                      </> : <ruta.componente />
+
+                  }
+
+  
                     <Footer></Footer>
                 </Route>)}
             </Switch>

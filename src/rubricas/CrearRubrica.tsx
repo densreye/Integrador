@@ -42,12 +42,9 @@ export default function CrearRubrica() {
                 }],
             fechaCreacion: new Date(),
             estado: "",
- 
-
             }} 
                  onSubmit={async valores => {
                     await crear(valores);
-                    console.log("VALORES ACTUALES",valores)
                  }}
             />
         </>

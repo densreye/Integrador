@@ -8,12 +8,14 @@ import Paginacion from "utils/Paginacion";
 import { rubricaDTO } from "./rubricas.model";
 import confirmar from "utils/Confirmar";
 import Autorizado from "Auth/Autorizado";
+import mostrar from "utils/Mostrar";
 
 import { Card, CardContent,Grid} from "@mui/material";
 import PDFPrintRubrica from "./DescPdfRubrica";
 
 export default function IndiceRubricas() {
     const [generos,setGeneros]= useState<rubricaDTO[]>();
+    const [rubricaMostrar,setRubricaMostrar]= useState<rubricaDTO[]>();
     const [totalDePaginas,setTotalDePaginas]=useState(0);
     const [recordsPorPagina, setRecordsPorPagina]=useState(10);
     const [pagina,setPagina]=useState(1);
@@ -42,30 +44,47 @@ export default function IndiceRubricas() {
             console.log(error);
         }
     }
-
+    async function mostrarID(id:number){
+        try{
+            axios.get(`${urlRubricas}/${id}`).then((respuesta:AxiosResponse<rubricaDTO[]>)=>{
+                console.log("respuesta",respuesta.data);    
+                setRubricaMostrar(respuesta.data);
+            })
+   
+        }catch(error){
+            console.log(error);
+        }
+    }
 return (
         <div className="container col-lg-9">
-            
             <h3>Rúbricas</h3>
-
-            
             <Autorizado role="admin" autorizado={
-            
             <>
             <br></br>
-            
             <Link className="btn btn-primary" style={{ backgroundColor: '#001c43'}} to="rubricas/crear" >Crear Rúbrica</Link>
             <br></br>
             <br></br>
-            
-            <b>Estás autorizado</b>
+       
             <br></br>
             </>}
             
-                noAutorizado={<b>No autorizado</b>}
+             
                 
             />
+            <Autorizado role="coordinador" autorizado={
+            <>
+            <br></br>
+            <Link className="btn btn-primary" style={{ backgroundColor: '#001c43'}} to="rubricas/crear" >Crear Rúbrica</Link>
+            <br></br>
+            <br></br>
+      
+            <br></br>
+            </>}
             
+            
+                
+            />
+
             <div className="form-group" style={{width:'150px'}}>
             <br></br>
                 <label> Registros por página: </label>
@@ -96,6 +115,7 @@ return (
                             <th>Fecha Creación</th>
                             <th>Estado</th>
                             <Autorizado role="admin" autorizado={ <th>Acción</th>}/>
+                            <Autorizado role="coordinador" autorizado={ <th>Acción</th>}/>
                         </tr>
                     </thead>
                     <tbody>
@@ -103,7 +123,11 @@ return (
                             <tr key={genero.id}  className="color"><td>
                                     {genero.nombre}
                                 </td>
-                                <td>CRITERIOS</td>
+                                <td><Button  
+                                    onClick={()=>mostrar(()=>mostrarID(genero.id),
+                                        `Criterios: ${rubricaMostrar}`,"ok")}
+                                    className="btn btn-info container col-lg-9 m-2">Mostrar</Button></td>
+                                    
                                 <td>{genero.clasificacion}</td>
                                 <td>{genero.fechaCreacion}</td>
                                 <td>{(() => {
@@ -115,8 +139,7 @@ return (
                                     default:      return <b>Pendiente</b>;
                                     }
                                 })()}</td>
-
-                                <Autorizado role="admin"
+                                <Autorizado role="coordinador" 
                                     autorizado={
                                     <td>{(() => {
                                         switch (genero.estado) {
@@ -150,7 +173,42 @@ return (
                                         
                                     })()}</td>
                                     }
-                                    />
+                                />
+                                    <Autorizado role="admin" 
+                                    autorizado={
+                                    <td>{(() => {
+                                        switch (genero.estado) {
+                                        case "":   return  <><Link className='btn btn-primary'
+                                        style={{ backgroundColor: '#001c43'}} 
+                                        to={`/rubricas/editar/${genero.id}`}>
+                                            Editar
+                                        </Link>
+                                        <Button
+                                        onClick={()=>confirmar(()=>borrar(genero.id))}
+                                        className="btn btn-danger">Borrar</Button></>;
+                                        case "Pendiente": return <><Link className='btn btn-primary'
+                                                            style={{ backgroundColor: '#001c43'}} 
+                                                            to={`/rubricas/editar/${genero.id}`}>
+                                                                Editar
+                                                            </Link>
+                                                            <Button
+                                                            onClick={()=>confirmar(()=>borrar(genero.id))}
+                                                            className="btn btn-danger">Borrar</Button>
+                                                            </>;
+                                        case "Aprobado":  return <b> </b>;
+                                        case "Rechazado":  return <><Link className='btn btn-primary' 
+                                                        style={{ backgroundColor: '#001c43'}} 
+                                                        to={`/rubricas/editar/${genero.id}`}>
+                                                            Editar
+                                                        </Link>
+                                                        <Button
+                                                        onClick={()=>confirmar(()=>borrar(genero.id))}
+                                                        className="btn btn-danger">Borrar</Button></>;
+                                        }
+                                        
+                                    })()}</td>
+                                    }
+                                />
                             </tr>)}
                     </tbody>
                 </table>
